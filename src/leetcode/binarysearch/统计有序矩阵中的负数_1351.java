@@ -18,8 +18,7 @@ public class 统计有序矩阵中的负数_1351 {
      */
     public int countNegatives(int[][] grid) {
         int mark = 0;
-        for (int i = 0; i < grid.length; i++) {
-            int[] temp = grid[i];
+        for (int[] temp : grid) {
             int start = 0, end = temp.length - 1;
             while (start <= end) {
                 int mid = start + (end - start) / 2;
@@ -91,8 +90,7 @@ public class 统计有序矩阵中的负数_1351 {
     public int countNegatives3(int[][] grid) {
         int pos = grid[0].length - 1;
         int num = 0;
-        for (int i = 0; i < grid.length; i++) {
-            int[] temp = grid[i];
+        for (int[] temp : grid) {
             //如果全都是正数，跳过当前行
             if (temp[grid[0].length - 1] >= 0) {
                 continue;

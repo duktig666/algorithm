@@ -51,6 +51,7 @@ public class 山脉数组的峰顶索引_852 {
                 //找到条件后会在执行一次，所以start的最终结果即为mid
                 start = mid + 1;
             } else {
+                // 右边的还需要再次比较，所以mid不能-1
                 end = mid;
             }
         }

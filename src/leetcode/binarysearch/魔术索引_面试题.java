@@ -51,6 +51,7 @@ public class 魔术索引_面试题 {
     public void test1() {
         System.out.println(findMagicIndex(new int[] {0, 2, 3, 4, 5}));
         System.out.println(findMagicIndex(new int[] {1, 1, 1}));
+        System.out.println(findMagicIndex(new int[] {1, 3, 9, 11, 15, 20}));
     }
 
     /**

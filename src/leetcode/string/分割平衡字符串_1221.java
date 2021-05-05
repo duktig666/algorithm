@@ -45,10 +45,8 @@ public class 分割平衡字符串_1221 {
             if (lCount == rCount) {
                 sum++;
                 start = end;
-                end += 2;
-            } else {
-                end += 2;
             }
+            end += 2;
 
         }
         return sum;

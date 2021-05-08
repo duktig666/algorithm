@@ -38,7 +38,7 @@ public class 二分查找 {
     }
 
     /**
-     * 二分查找法 循环实现
+     * 二分查找法 递归实现
      *
      * @param arr   待查找数组
      * @param num   待查询数

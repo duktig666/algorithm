@@ -5,7 +5,7 @@ import datastructure.queue.Queue;
 import java.util.Scanner;
 
 /**
- * description:动态循环
+ * description:动态循环队列
  *
  * @author RenShiWei
  * Date: 2021/5/30 17:06

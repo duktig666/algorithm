@@ -1,4 +1,4 @@
-package datastructure.sparsearray;
+package datastructure.array.sparsearray;
 
 import org.junit.Test;
 

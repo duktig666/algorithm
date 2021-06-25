@@ -145,6 +145,11 @@ public class QuickSort {
         return r;
     }
 
+    /* 三分法实现快排 */
+
+    /**
+     * 对整个数组快速排序（三分法）
+     */
     public static void quickSortByThree(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -152,7 +157,9 @@ public class QuickSort {
         quickSortByThree(arr, 0, arr.length - 1);
     }
 
-
+    /**
+     * 在数组的指定范围内进行快速排序（三分法）
+     */
     public static void quickSortByThree(int[] arr, int l, int r) {
         if (l < r) {
             //三点中值法选取主元，放到数组末尾
@@ -163,6 +170,9 @@ public class QuickSort {
         }
     }
 
+    /**
+     * 三分法，并返回主元元素的下边范围（与主元元素相等，且只有两个元素的数组）
+     */
     private static int[] partitionByThreePart(int[] arr, int l, int r) {
         //less指针用来记录最后一个小于主元的元素位置；less指针+1到l指针为相等的元素，l指针用来扫描
         int less = l - 1;

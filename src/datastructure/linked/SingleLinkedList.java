@@ -13,7 +13,7 @@ public class SingleLinkedList<E> {
     /**
      * 内部类：表示链表的节点
      */
-    private class Node<E> {
+    private static class Node<E> {
         /** 所存储的元素 */
         E e;
 
@@ -89,7 +89,7 @@ public class SingleLinkedList<E> {
             prev = prev.next;
         }
         /*
-          三步合并成一步（详情见下边注释）
+          三步合并成一步（详情见注释）
                 Node<E> node = new Node<E>(e);
                 node.next = prev.next;
                 prev.next = node;
@@ -278,6 +278,9 @@ public class SingleLinkedList<E> {
      * @return 反转后的链表
      */
     public Node<E> reverseIteratively(Node<E> node) {
+        if (dummyHead == null || dummyHead.next == null) {
+            return null;
+        }
         //pre用来保存先前结点
         Node<E> pre = null;
         //next用来做临时变量
@@ -414,8 +417,13 @@ public class SingleLinkedList<E> {
         linkedList.add(2, 6);
         System.out.println(linkedList);
 
+        System.out.println("链表删除元素");
+        Integer integer = linkedList.removeLast();
+        System.out.println(integer);
+        System.out.println(linkedList);
+
         System.out.println("---遍历法实现链表反转---");
-        Node<Integer> node = (Node<Integer>) linkedList.reverseIteratively(linkedList.dummyHead);
+        Node<Integer> node = linkedList.reverseIteratively(linkedList.dummyHead);
         while (node != null) {
             System.out.print(node.e + "—>");
             node = node.next;

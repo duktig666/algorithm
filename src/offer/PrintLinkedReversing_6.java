@@ -3,7 +3,7 @@ package offer;
 import java.util.Stack;
 
 /**
- * description:
+ * description:《剑指offer》第六题——从尾到头打印单链表
  *
  * @author RenShiWei
  * Date: 2021/7/7 20:50
@@ -37,12 +37,33 @@ public class PrintLinkedReversing_6<E> {
         head = new Node<>();
     }
 
+    /**
+     * 在链表末尾添加元素
+     */
     public void add(E e) {
         Node<E> temp = head;
         while (temp.next != null) {
             temp = temp.next;
         }
         temp.next = new Node<>(e);
+    }
+
+    /**
+     * 从前往后遇到第一个e，删除节点
+     */
+    public void del(E e) {
+        Node<E> temp = head;
+        while (temp.next != null) {
+            if (temp.next.data.equals(e)) {
+                break;
+            }
+            temp = temp.next;
+        }
+        if (temp.next == null) {
+            throw new IllegalArgumentException("Del fail——Not found e");
+        } else {
+            temp.next = temp.next.next;
+        }
     }
 
     /**
@@ -78,6 +99,7 @@ public class PrintLinkedReversing_6<E> {
         linked.add(2);
         linked.add(3);
         linked.add(4);
+        linked.del(2);
         linked.backPrint(linked.head);
         System.out.println("------");
         linked.backPrintRecursion(linked.head);

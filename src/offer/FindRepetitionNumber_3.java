@@ -14,7 +14,7 @@ import org.junit.Test;
  * @author RenShiWei
  * Date: 2021/6/9 11:24
  **/
-public class 面试题3_数组中重复的数字 {
+public class FindRepetitionNumber_3 {
     /*
         题目一解题思路
         思路一：排序，扫描相邻数组元素是否相同  时间复杂度 O(nlogn)

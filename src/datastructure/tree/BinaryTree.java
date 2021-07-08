@@ -302,7 +302,7 @@ public class BinaryTree<E extends Comparable<E>> {
     }
 
     /**
-     * 从二分搜索树中删除最小值所在节点
+     * 从二分搜索树中git 删除最小值所在节点
      *
      * @return 最小值
      */
@@ -413,6 +413,10 @@ public class BinaryTree<E extends Comparable<E>> {
         }
     }
 
+    public void removeAll(E e) {
+        this.root = null;
+    }
+
     /**
      * 返回
      *
@@ -472,11 +476,15 @@ public class BinaryTree<E extends Comparable<E>> {
         return res.toString();
     }
 
+    /**
+     * 这种方式描述树，不如广义表描述的直观
+     * StringBuilder res = new StringBuilder();
+     * generateString(root, 0, res);
+     * return res.toString();
+     */
     @Override
     public String toString() {
-        StringBuilder res = new StringBuilder();
-        generateString(root, 0, res);
-        return res.toString();
+        return toGenListString();
     }
 
     public static void main(String[] args) {
@@ -497,15 +505,6 @@ public class BinaryTree<E extends Comparable<E>> {
         System.out.println(tree.toGenListString());
 
     }
-
-    /*
-     * 删除p节点的左或右子树
-     */
-
-    /*
-     * 删除二叉树
-     */
-
 
 }
 

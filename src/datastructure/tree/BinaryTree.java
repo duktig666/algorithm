@@ -2,7 +2,6 @@ package datastructure.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -63,6 +62,29 @@ public class BinaryTree<E extends Comparable<E>> {
      */
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    /*
+     * @return 返回二叉树的高度
+     */
+    public int height() {
+        return height(root);
+    }
+
+    /**
+     * @param p 根节点
+     * @return 二叉树的高度
+     */
+    public int height(Node<E> p) {
+        if (p == null) {
+            return 0;
+        }
+        // 返回左子树的高度
+        int lh = height(p.left);
+        // 返回右子树的高度
+        int rh = height(p.right);
+        // 当前子树高度为较高子树的高度加1
+        return lh >= rh ? lh + 1 : rh + 1;
     }
 
     /**
@@ -392,6 +414,34 @@ public class BinaryTree<E extends Comparable<E>> {
     }
 
     /**
+     * 返回
+     *
+     * @return 二叉树的广义表表示字符串
+     */
+    public String toGenListString() {
+        return "二叉树的广义表表示:" + toGenListString(this.root) + "\n";
+    }
+
+    /**
+     * @param p 根节点
+     * @return 二叉树的广义表表示字符串
+     */
+    public String toGenListString(Node<E> p) {
+        if (p == null) {
+            // 返回空子树表示
+            return "^";
+        }
+        String str = p.e.toString();
+        // 非叶结点，有子树
+        if (p.left != null || p.right != null) {
+            // 递归调用
+            str += "(" + toGenListString(p.left) + ","
+                    + toGenListString(p.right) + ")";
+        }
+        return str;
+    }
+
+    /**
      * 生成以node为根节点，深度为depth的描述二叉树的字符串
      *
      * @param node  根节点
@@ -429,16 +479,6 @@ public class BinaryTree<E extends Comparable<E>> {
         return res.toString();
     }
 
-    // 打乱数组顺序
-    private static void shuffle(Object[] arr) {
-        for (int i = arr.length - 1; i >= 0; i--) {
-            int pos = (int) (Math.random() * (i + 1));
-            Object t = arr[pos];
-            arr[pos] = arr[i];
-            arr[i] = t;
-        }
-    }
-
     public static void main(String[] args) {
         BinaryTree<Integer> tree = new BinaryTree<>();
         tree.add(1);
@@ -446,6 +486,7 @@ public class BinaryTree<E extends Comparable<E>> {
         tree.add(3);
         tree.add(2);
         System.out.println(tree);
+        System.out.println("树的高度：" + tree.height());
         System.out.println("--先序遍历--");
         tree.preOrder();
         System.out.println("--中序遍历--");
@@ -453,36 +494,9 @@ public class BinaryTree<E extends Comparable<E>> {
         System.out.println("--后序遍历--");
         tree.postOrder();
         System.out.println("--随机测试--");
+        System.out.println(tree.toGenListString());
 
-        BinaryTree<Integer> bst = new BinaryTree<>();
-        Random random = new Random();
-        int n = 100;
-        for (int i = 0; i < n; i++) {
-            bst.add(random.nextInt(n));
-        }
-        // 注意, 由于随机生成的数据有重复, 所以bst中的数据数量大概率是小于n的
-        // order数组中存放[0...n)的所有元素
-        Integer[] order = new Integer[n];
-        for (int i = 0; i < n; i++) {
-            order[i] = i;
-        }
-        // 打乱order数组的顺序
-        shuffle(order);
-        // 乱序删除[0...n)范围里的所有元素
-        for (int i = 0; i < n / 2; i++) {
-            if (bst.contains(order[i])) {
-                bst.remove(order[i]);
-                System.out.println("After remove " + order[i] + ", size = " + bst.size());
-            }
-        }
-        // 最终整个二分搜索树应该为空
-        System.out.println(bst.size());
-        System.out.println(bst);
     }
-
-    /*
-     * 返回二叉树的高度
-     */
 
     /*
      * 删除p节点的左或右子树

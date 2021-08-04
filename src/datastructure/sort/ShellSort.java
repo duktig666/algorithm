@@ -18,11 +18,10 @@ public class ShellSort {
             return;
         }
         int interval = 1;
-        // 计算希尔增量
+        // 根据数组长度，计算希尔增量（目前来说还算是比较优的一种计算方式）
         while (interval < arr.length / 3) {
             interval = 3 * interval + 1;
         }
-        System.out.println(interval);
         // 不断缩小步长，直至为1
         while (interval >= 1) {
             //根据步长分组进行【直接插入排序】，i初始值为h，每次和分组的前一个元素比较

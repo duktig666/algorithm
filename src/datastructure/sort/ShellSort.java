@@ -17,22 +17,22 @@ public class ShellSort {
         if (arr == null || arr.length < 2) {
             return;
         }
-        int h = 1;
+        int interval = 1;
         // 计算希尔增量
-        while (h < arr.length / 3) {
-            h = 3 * h + 1;
+        while (interval < arr.length / 3) {
+            interval = 3 * interval + 1;
         }
-        System.out.println(h);
+        System.out.println(interval);
         // 不断缩小步长，直至为1
-        while (h >= 1) {
+        while (interval >= 1) {
             //根据步长分组进行【直接插入排序】，i初始值为h，每次和分组的前一个元素比较
-            for (int i = h; i < arr.length; i++) {
-                for (int j = i; j >= h && arr[j] < arr[j - h]; j -= h) {
+            for (int i = interval; i < arr.length; i++) {
+                for (int j = i; j >= interval && arr[j] < arr[j - interval]; j -= interval) {
                     //分组内元素，左边大于右边，交换元素
-                    swap(arr, j, j - h);
+                    swap(arr, j, j - interval);
                 }
             }
-            h = h / 3;
+            interval = interval / 3;
         }
     }
 

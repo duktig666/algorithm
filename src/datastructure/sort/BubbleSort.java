@@ -3,7 +3,12 @@ package datastructure.sort;
 import java.util.Arrays;
 
 /**
- * description:冒泡排序
+ * description:冒泡排序  @see https://blog.csdn.net/qq_42937522/article/details/105127735
+ * <p>
+ * 总结：两次循环。第一次循环，从末尾开始，每次-1（每循环一次，最大的数排到末尾）；
+ * 第二次循环，循环到数组的索引对象，如果比右边数组对象大，交换位置，否则继续循环
+ * <p>
+ * 最坏、平均时间复杂度O(n^2)，最好时间复杂度为O(n)， 额外空间复杂度O(1),稳定（相同元素不做处理）
  *
  * @author RenShiWei
  * Date: 2020/2/9 17:42
@@ -13,7 +18,7 @@ public class BubbleSort {
     /**
      * 冒泡排序优化——最佳情况T(n) = O(n)
      */
-    public void bubbleSort(int[] arr) {
+    public static void bubbleSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
@@ -70,15 +75,14 @@ public class BubbleSort {
     }
 
     public static void main(String[] args) {
-        BubbleSort bubbleSort = new BubbleSort();
         int[] arr = {1, 6, 2, 68, 5, 8, 45};
-        bubbleSort.bubbleSort(arr);
+        bubbleSort(arr);
         System.out.println(Arrays.toString(arr));
         int[] arr2 = {1, 6, 2, 4, 5, 8, 45, 68, 6};
-        bubbleSort.bubbleSort(arr2);
+        bubbleSort(arr2);
         System.out.println(Arrays.toString(arr2));
         int[] arr3 = {1, 2, 3, 4, 5, 6};
-        bubbleSort.bubbleSort(arr3);
+        bubbleSort(arr3);
         System.out.println(Arrays.toString(arr3));
     }
 

@@ -158,26 +158,26 @@ public class QuickSort {
         //以数组最左侧的值为目标值
         int pivot = arr[l];
         //扫描指针
-        int left = l + 1;
+        int less = l + 1;
         //右侧指针
-        int right = r;
-        while (left <= right) {
+        int more = r;
+        while (less <= more) {
             //left不停的往右走，知道遇到大于主元的元素
-            while (left <= right && arr[left] <= pivot) {
+            while (less <= more && arr[less] <= pivot) {
                 //循环退出时，left一定指向第一个大于主元的元素
-                left++;
+                less++;
             }
-            while (left <= right && pivot < arr[right]) {
+            while (less <= more && pivot < arr[more]) {
                 //循环退出时，right一定指向第一个小于主元的元素
-                right--;
+                more--;
             }
-            if (left <= right) {
-                swap(arr, left, right);
+            if (less <= more) {
+                swap(arr, less, more);
             }
         }
         //while退出时，两者交错，right一定指向第一个小于主元的元素
-        swap(arr, l, right);
-        return right;
+        swap(arr, l, more);
+        return more;
     }
 
     /* 三分法实现快排 */

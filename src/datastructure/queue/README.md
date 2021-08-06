@@ -118,3 +118,17 @@
 
 参看：[DynamicLoopQueue.java](./impl/DynamicLoopQueue.java)
 
+## 总结指针变化
+
+|          | 简单队列         | 循环队列                           |
+| -------- | ---------------- | ---------------------------------- |
+| 初始     | front = rear = 0 | front = rear = 0                   |
+| 判空     | front = rear     | front = rear                       |
+| 判满     | rear = maxSize   | (rear + 1) % maxSize = front       |
+| 入队     | rear + 1         | (rear + 1) % maxSize               |
+| 出队     | front+ 1         | (front+ 1) % maxSize               |
+| 元素个数 | rear - front +1  | (rear + maxSize - front) % maxSize |
+
+- `front`：指示队头元素在数组中的位置。
+- `rear`：指示真实队尾元素相邻的下一个位置。
+- `maxSize`：存储元素 数组的长度。

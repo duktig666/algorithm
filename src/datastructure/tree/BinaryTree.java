@@ -64,7 +64,7 @@ public class BinaryTree<E extends Comparable<E>> {
         return size == 0;
     }
 
-    /*
+    /**
      * @return 返回二叉树的高度
      */
     public int height() {
@@ -487,6 +487,61 @@ public class BinaryTree<E extends Comparable<E>> {
         return toGenListString();
     }
 
+    /*
+        -----------------------   重建二叉树 开始  -------------------------
+        根据前序遍历和中序遍历，构建二叉树
+     */
+
+    /**
+     * 解法：重建二叉树
+     * 递归：传入子数组的边界索引
+     * 时间复杂度：O(n)，空间复杂度：O(n)
+     *
+     * @param preOrder 前序遍历序列
+     * @param inOrder  中序遍历序列
+     * @return 树根节点
+     */
+    public Node<E> reConstructBinaryTree(E[] preOrder, E[] inOrder) {
+        if (preOrder == null || preOrder.length == 0 || inOrder == null || inOrder.length == 0) {
+            return null;
+        }
+        return helper(preOrder, 0, preOrder.length - 1, inOrder, 0, inOrder.length - 1);
+    }
+
+    /**
+     * @param preOrder 先序遍历序列
+     * @param preL     子 先序遍历序列开始索引
+     * @param preR     子 先序遍历序列结束索引
+     * @param inOrder  中序遍历序列
+     * @param inL      子 中序遍历序列开始索引
+     * @param inR      子 中序遍历序列结束索引
+     * @return 树根节点
+     */
+    private Node<E> helper(E[] preOrder, int preL, int preR, E[] inOrder, int inL, int inR) {
+        if (preL > preR || inL > inR) {
+            return null;
+        }
+        //根节点的值
+        E rootVal = preOrder[preL];
+        //计算 中序序列中根节点的索引（左子树的节点数量）
+        int index = 0;
+        while (index <= inR && inOrder[index] != rootVal) {
+            index++;
+        }
+        Node<E> root = new Node<>(rootVal);
+        //选取前序序列和中序序列中左子树的子序列，递归构建左子树
+        root.left = helper(preOrder, preL + 1, preL - inL + index, inOrder, inL, index);
+        //选取前序序列和中序序列中右子树的子序列，递归构建右子树
+        root.right = helper(preOrder, preL - inL + index + 1, preR, inOrder, index + 1, inR);
+        //返回二叉树的根结点
+        return root;
+    }
+
+    //-----------------------   重建二叉树 结束  -------------------------
+
+    /**
+     * 测试
+     */
     public static void main(String[] args) {
         BinaryTree<Integer> tree = new BinaryTree<>();
         tree.add(1);
@@ -504,6 +559,14 @@ public class BinaryTree<E extends Comparable<E>> {
         System.out.println("--随机测试--");
         System.out.println(tree.toGenListString());
 
+        System.out.println("--重建二叉树--");
+        // 前序遍历结果
+        Integer[] pre = {1, 2, 4, 7, 3, 5, 6, 8};
+        // 中序遍历结果
+        Integer[] in = {4, 7, 2, 1, 5, 3, 8, 6};
+        BinaryTree<Integer> reConstructBinaryTree = new BinaryTree<>();
+        reConstructBinaryTree.root = reConstructBinaryTree.reConstructBinaryTree(pre, in);
+        System.out.println(reConstructBinaryTree);
     }
 
 }

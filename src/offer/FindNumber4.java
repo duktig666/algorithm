@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @author RenShiWei
  * Date: 2021/7/2 11:28
  **/
-public class FindNumber_4 {
+public class FindNumber4 {
 
     static boolean findMatrixForNum(int[][] matrix, int num) {
         int i = matrix[0].length - 1, j = 0;

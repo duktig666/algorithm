@@ -8,7 +8,7 @@ import org.junit.Test;
  * @author RenShiWei
  * Date: 2021/7/5 18:05
  **/
-public class ReplaceBlank_5 {
+public class ReplaceBlank5 {
 
     /**
      * 使用StringBuilder或StringBuffer解决

@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * description:希尔排序 @see https://blog.csdn.net/qq_42937522/article/details/105128083
+ * <p>
+ * 平均时间复杂度O(n^2/3),最坏时间复杂度为O(n^2),空间复杂度为O(1),不稳定
  *
  * @author RenShiWei
  * Date: 2021/8/4 15:43

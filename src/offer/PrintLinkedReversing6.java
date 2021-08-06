@@ -8,7 +8,7 @@ import java.util.Stack;
  * @author RenShiWei
  * Date: 2021/7/7 20:50
  **/
-public class PrintLinkedReversing_6<E> {
+public class PrintLinkedReversing6<E> {
 
     static class Node<E> {
 
@@ -33,7 +33,7 @@ public class PrintLinkedReversing_6<E> {
 
     private Node<E> head;
 
-    PrintLinkedReversing_6() {
+    PrintLinkedReversing6() {
         head = new Node<>();
     }
 
@@ -94,7 +94,7 @@ public class PrintLinkedReversing_6<E> {
     }
 
     public static void main(String[] args) {
-        PrintLinkedReversing_6<Integer> linked = new PrintLinkedReversing_6<>();
+        PrintLinkedReversing6<Integer> linked = new PrintLinkedReversing6<>();
         linked.add(1);
         linked.add(2);
         linked.add(3);

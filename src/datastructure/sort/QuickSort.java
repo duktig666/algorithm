@@ -107,7 +107,7 @@ public class QuickSort {
     }
 
     /**
-     * 双向扫描法：
+     * 双向扫描法（右侧为主元）：
      * 双指针，双向扫描，并返回主元元素的下标
      *
      * @param arr /
@@ -143,6 +143,41 @@ public class QuickSort {
         }
         //此时的more即为主元所在的位置
         return r;
+    }
+
+    /**
+     * 双向扫描法（左侧为主元）：
+     * 双指针，双向扫描，并返回主元元素的下标
+     *
+     * @param arr /
+     * @param l   /
+     * @param r   /
+     * @return 只有两个元素的数组，是等于主元的区间
+     */
+    public static int partitionByDoubleScannerLeft(int[] arr, int l, int r) {
+        //以数组最左侧的值为目标值
+        int pivot = arr[l];
+        //扫描指针
+        int left = l + 1;
+        //右侧指针
+        int right = r;
+        while (left <= right) {
+            //left不停的往右走，知道遇到大于主元的元素
+            while (left <= right && arr[left] <= pivot) {
+                //循环退出时，left一定指向第一个大于主元的元素
+                left++;
+            }
+            while (left <= right && pivot < arr[right]) {
+                //循环退出时，right一定指向第一个小于主元的元素
+                right--;
+            }
+            if (left <= right) {
+                swap(arr, left, right);
+            }
+        }
+        //while退出时，两者交错，right一定指向第一个小于主元的元素
+        swap(arr, l, right);
+        return right;
     }
 
     /* 三分法实现快排 */

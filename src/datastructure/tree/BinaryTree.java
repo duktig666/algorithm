@@ -83,7 +83,7 @@ public class BinaryTree<E extends Comparable<E>> {
         int lh = height(p.left);
         // 返回右子树的高度
         int rh = height(p.right);
-        // 当前子树高度为较高子树的高度加1
+        // 当前子树高度为较高子树的高度加1（+根结点高度）
         return lh >= rh ? lh + 1 : rh + 1;
     }
 
@@ -148,6 +148,12 @@ public class BinaryTree<E extends Comparable<E>> {
             return contains(node.right, e);
         }
     }
+
+    /*
+     * -----------------二叉树遍历 start---------------------
+     * 前序、中序、后序 （递归和循环 两种实现方式）
+     * 层次
+     */
 
     /**
      * 二叉查找树的前序遍历：根->左->右
@@ -251,6 +257,12 @@ public class BinaryTree<E extends Comparable<E>> {
         }
     }
 
+    //-----------------二叉树遍历 end---------------------
+
+    /*
+        ------------二叉树寻找最大值、最小值 start----------
+     */
+
     /**
      * 寻找二分搜索树的最小元素
      *
@@ -301,8 +313,10 @@ public class BinaryTree<E extends Comparable<E>> {
         return maximum(node.right);
     }
 
+    //------------二叉树寻找最大值、最小值 start----------
+
     /**
-     * 从二分搜索树中git 删除最小值所在节点
+     * 从二分搜索树中 删除最小值所在节点
      *
      * @return 最小值
      */

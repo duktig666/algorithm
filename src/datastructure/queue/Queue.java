@@ -13,15 +13,6 @@ public interface Queue<E> {
      */
     boolean isEmpty();
 
-    /**
-     * @return 是否队满
-     */
-    boolean isFull();
-
-    /**
-     * @return 队列的可承载元素个数
-     */
-    int getCapacity();
 
     /**
      * @return 队列元素个数

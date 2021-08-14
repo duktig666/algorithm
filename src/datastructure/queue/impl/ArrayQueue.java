@@ -45,7 +45,6 @@ public class ArrayQueue<E> implements Queue<E> {
     /**
      * @return 是否队满
      */
-    @Override
     public boolean isFull() {
         return rear == maxSize;
     }
@@ -101,7 +100,6 @@ public class ArrayQueue<E> implements Queue<E> {
     /**
      * @return 队列的可承载元素个数
      */
-    @Override
     public int getCapacity() {
         return data.length - 1;
     }

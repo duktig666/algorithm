@@ -7,7 +7,7 @@ package datastructure.stack;
  * Date: 2019/11/23
  * Time: 17:15
  **/
-public class LinkedListStack<E> implements Stack<E> {
+public class LinkedStack<E> implements Stack<E> {
 
     static class Node<E> {
         E data;
@@ -33,7 +33,7 @@ public class LinkedListStack<E> implements Stack<E> {
     /** 栈顶元素 */
     private Node<E> top;
 
-    public LinkedListStack() {
+    public LinkedStack() {
         top = new Node<>();
         size = 0;
     }
@@ -114,7 +114,7 @@ public class LinkedListStack<E> implements Stack<E> {
      * 测试栈
      */
     public static void main(String[] args) {
-        LinkedListStack<Integer> stack = new LinkedListStack<>();
+        LinkedStack<Integer> stack = new LinkedStack<>();
         for (int i = 0; i < 5; i++) {
             stack.push(i);
         }

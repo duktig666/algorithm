@@ -64,7 +64,7 @@ public class SingleLinkedListStack<E> implements Stack<E> {
         StringBuilder res = new StringBuilder();
         res.append("Stack:TOP ");
         res.append(list);
-        res.append("NULL END");
+        res.append(" END");
         return res.toString();
     }
 
@@ -72,7 +72,7 @@ public class SingleLinkedListStack<E> implements Stack<E> {
      * 测试栈
      */
     public static void main(String[] args) {
-        LinkedListStack<Integer> stack = new LinkedListStack<>();
+        SingleLinkedListStack<Integer> stack = new SingleLinkedListStack<>();
         for (int i = 0; i < 5; i++) {
             stack.push(i);
         }

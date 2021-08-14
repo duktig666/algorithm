@@ -1,6 +1,7 @@
-package datastructure.stack;
+package datastructure.stack.impl;
 
 import datastructure.array.SequenceList;
+import datastructure.stack.Stack;
 
 /**
  * description:使用自定义的动态数组（SequenceList）实现栈（栈满动态扩容）

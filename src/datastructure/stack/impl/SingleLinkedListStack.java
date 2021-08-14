@@ -1,6 +1,7 @@
-package datastructure.stack;
+package datastructure.stack.impl;
 
 import datastructure.linked.SingleLinkedList;
+import datastructure.stack.Stack;
 
 /**
  * description:自定实现的单链表来实现栈

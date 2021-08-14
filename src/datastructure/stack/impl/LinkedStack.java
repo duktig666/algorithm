@@ -1,4 +1,6 @@
-package datastructure.stack;
+package datastructure.stack.impl;
+
+import datastructure.stack.Stack;
 
 /**
  * description：使用链表来实现栈

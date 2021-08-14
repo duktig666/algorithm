@@ -1,4 +1,6 @@
-package datastructure.stack;
+package datastructure.stack.impl;
+
+import datastructure.stack.Stack;
 
 import java.util.Arrays;
 

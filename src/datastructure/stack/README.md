@@ -32,3 +32,4 @@
 
 ![栈的链式存储](https://gitee.com/koala010/typora/raw/master/img/20210814182033.png)
 
+Java stack的api参看 [java之Stack详细介绍](https://www.cnblogs.com/jpfss/p/11142612.html)

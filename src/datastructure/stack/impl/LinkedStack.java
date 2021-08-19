@@ -83,6 +83,9 @@ public class LinkedStack<E> implements Stack<E> {
      */
     @Override
     public E pop() {
+        if (size <= 0) {
+            throw new IllegalArgumentException("Remove failed. Stack is empty!");
+        }
         E oldData = top.data;
         top = top.next;
         size--;

@@ -1,23 +1,40 @@
-package offer;
+package datastructure.stack.impl;
 
+import datastructure.stack.Stack;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * description:两个队列构建栈——剑指offer 第九题 延伸题
+ * description:两个队列实现栈
  *
  * @author RenShiWei
- * Date: 2021/8/19 17:54
+ * Date: 2021/8/19 20:46
  **/
-public class BuildStack9Ext<E> {
+public class QueueStack<E> implements Stack<E> {
 
     private Queue<E> queue1;
     private Queue<E> queue2;
 
-    public BuildStack9Ext() {
+    public QueueStack() {
         queue1 = new LinkedList<>();
         queue2 = new LinkedList<>();
+    }
+
+    /**
+     * @return 获取栈的大小
+     */
+    @Override
+    public int getSize() {
+        return queue1.size() + queue2.size();
+    }
+
+    /**
+     * @return 判断栈是否为空
+     */
+    @Override
+    public boolean isEmpty() {
+        return queue1.isEmpty() && queue2.isEmpty();
     }
 
     /**
@@ -25,6 +42,7 @@ public class BuildStack9Ext<E> {
      *
      * @param e 入队元素
      */
+    @Override
     public void push(E e) {
         if (queue2.isEmpty()) {
             queue1.add(e);
@@ -38,6 +56,7 @@ public class BuildStack9Ext<E> {
      *
      * @return 出队元素
      */
+    @Override
     public E pop() {
         if (queue1.isEmpty() && queue2.isEmpty()) {
             throw new IllegalArgumentException("Remove failed. Stack is empty!");
@@ -51,6 +70,38 @@ public class BuildStack9Ext<E> {
                 queue2.add(queue1.poll());
             }
             return queue1.poll();
+        }
+    }
+
+    /**
+     * @return 返回栈最顶层的元素
+     */
+    @Override
+    public E peek() {
+        if (queue1.isEmpty() && queue2.isEmpty()) {
+            throw new IllegalArgumentException("Remove failed. Stack is empty!");
+        }
+        Queue<E> queueTemp = new LinkedList<>();
+        if (! queue1.isEmpty()) {
+            copy(queueTemp, queue1);
+        } else {
+            copy(queueTemp, queue2);
+        }
+        while (queueTemp.size() > 1) {
+            queueTemp.poll();
+        }
+        return queueTemp.poll();
+    }
+
+    /**
+     * 队列拷贝
+     *
+     * @param target 目标队列
+     * @param src    源队列
+     */
+    private void copy(Queue<E> target, Queue<E> src) {
+        while (! src.isEmpty()) {
+            target.add(src.poll());
         }
     }
 
@@ -87,8 +138,11 @@ public class BuildStack9Ext<E> {
         return sb.toString();
     }
 
+    /**
+     * 测试
+     */
     public static void main(String[] args) {
-        BuildStack9Ext<Integer> stack = new BuildStack9Ext<>();
+        QueueStack<Integer> stack = new QueueStack<>();
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -105,6 +159,8 @@ public class BuildStack9Ext<E> {
         System.out.println(stack.toStringForQueue());
 
         System.out.println(stack);
+
+        System.out.println("栈顶：" + stack.peek());
 
     }
 

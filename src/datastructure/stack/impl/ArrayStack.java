@@ -73,6 +73,9 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public E pop() {
+        if (size <= 0) {
+            throw new IllegalArgumentException("Remove failed. Stack is empty!");
+        }
         E e = array[-- size];
         if (size > 0 && size == array.length / 4) {
             resize(array.length / 2);

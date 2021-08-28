@@ -48,7 +48,7 @@ public class QuickSort {
         if (l < r) {
             //随机主元
             randomPrimary(arr, l, r);
-            int p = partitionByDoubleScannerLeft(arr, l, r);
+            int p = partition(arr, l, r);
             quickSort(arr, l, p - 1);
             quickSort(arr, p + 1, r);
         }
@@ -63,7 +63,7 @@ public class QuickSort {
      * @param r   /
      * @return 只有两个元素的数组，是等于主元的区间
      */
-    private static int partitionByDoubleScannerLeft(int[] arr, int l, int r) {
+    private static int partition(int[] arr, int l, int r) {
         //以数组最左侧的值为目标值
         int pivot = arr[l];
         //扫描指针

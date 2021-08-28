@@ -8,7 +8,7 @@ import org.junit.Test;
  * @author RenShiWei
  * Date: 2021/4/22 16:51
  **/
-public class 二分查找 {
+public class BinarySearch {
 
     /**
      * 二分查找法 循环实现

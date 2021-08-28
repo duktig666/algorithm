@@ -118,7 +118,7 @@ public class QuickSortFull {
      * @param r   /
      * @return 只有两个元素的数组，是等于主元的区间
      */
-    public static int partitionByDoubleScannerLeft(int[] arr, int l, int r) {
+    private static int partitionByDoubleScannerLeft(int[] arr, int l, int r) {
         //以数组最左侧的值为目标值
         int pivot = arr[l];
         //扫描指针

@@ -274,10 +274,10 @@ public class SingleLinkedList<E> {
      * 将当前节点cur的下一个节点 cur.getNext()缓存到temp后，然后更改当前节点指针指向上一结点pre。
      * 也就是说在反转当前结点指针指向前，先把当前结点的指针域用tmp临时保存，以便下一次使用。
      *
-     * @param node 链表
+     * @param head 链表
      * @return 反转后的链表
      */
-    public Node<E> reverseIteratively(Node<E> node) {
+    public Node<E> reverseIteratively(Node<E> head) {
         if (dummyHead == null || dummyHead.next == null) {
             return null;
         }
@@ -299,13 +299,13 @@ public class SingleLinkedList<E> {
                 node = 3结点
                 进行循环…
          */
-        while (node != null) {
-            temp = node.next;
+        while (head != null) {
+            temp = head.next;
             //反转指针指向
-            node.next = pre;
+            head.next = pre;
             //指针向下移动
-            pre = node;
-            node = temp;
+            pre = head;
+            head = temp;
         }
         return pre;
     }
@@ -314,29 +314,30 @@ public class SingleLinkedList<E> {
      * 实现链表的反转（递归法）
      * 递归实质上就是系统帮你压栈的过程，系统在压栈的时候会保留现场
      *
-     * @param node 链表
+     * @param head 链表
      * @return 反转后的链表
      */
-    public Node<E> reverse(Node<E> node) {
-        //递归
-        if (null == node || null == node.next) {
-            return node;
+    public Node<E> reverse(Node<E> head) {
+        //当前节点为null，或者写一个节点为null，结束递归（递归过程需要判断下一个节点，所以也要判断）
+        if (null == head || null == head.next) {
+            return head;
         }
         /*
+            临时节点，用于存储下一个节点，当指针反转后，还能指向写一个节点
             此时head=3结点，temp=3结点.next(实际上是4结点)
             执行Node newHead = reverse(head.next);传入的head.next是4结点，返回的newHead是4结点
          */
-        Node<E> temp = node.next;
-        //进入递归
-        Node<E> newHead = reverse(node.next);
+        Node<E> temp = head.next;
+        //进入递归，返回值相当于当前节点
+        Node<E> newHead = reverse(head.next);
         /*
            弹栈过程:
-            程序继续执行 temp.next = head就相当于4->3
+            程序继续执行 temp.next = head就相当于4->3 （temp相当于下一个节点，temp.next相当于下一个节点的指针；即下一个节点指向当前节点，实现反转）
             head.next = null 即把3结点指向4结点的指针断掉
             返回新链表的头结点newHead
          */
-        temp.next = node;
-        node.next = null;
+        temp.next = head;
+        head.next = null;
         return newHead;
     }
 

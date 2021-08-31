@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.other;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,6 +94,7 @@ public class n皇后_51 {
 
     /**
      * 把数组转为list
+     *
      * @param chess /
      * @return /
      */
@@ -111,9 +112,10 @@ public class n皇后_51 {
 
     /**
      * 回溯解决n皇后问题
-     * @param res /
+     *
+     * @param res   /
      * @param chess /
-     * @param row /
+     * @param row   /
      */
     private void solve2(List<List<String>> res, char[][] chess, int row) {
         if (row == chess.length) {

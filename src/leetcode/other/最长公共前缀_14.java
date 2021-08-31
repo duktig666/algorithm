@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.other;
 
 /**
  * 功能描述：
@@ -24,31 +24,31 @@ package leetcode;
  **/
 public class 最长公共前缀_14 {
 
-    public static String longestCommonPrefix ( String[] strs ) {
+    public static String longestCommonPrefix(String[] strs) {
         if (strs.length == 0) {
             return "";
         }
         String s = strs[0];
         for (int i = 0; i < strs.length; i++) {
-            s=compareStr(s,strs[i]);
+            s = compareStr(s, strs[i]);
         }
         return s;
     }
 
-    static String compareStr ( String s1, String s2 ) {
-        StringBuilder sb=new StringBuilder();
+    static String compareStr(String s1, String s2) {
+        StringBuilder sb = new StringBuilder();
         int len = Math.min(s1.length(), s2.length());
         for (int i = 0; i < len; i++) {
-            if (s1.charAt(i)==s2.charAt(i)){
+            if (s1.charAt(i) == s2.charAt(i)) {
                 sb.append(s1.charAt(i));
-            }else{
+            } else {
                 return sb.toString();
             }
         }
         return sb.toString();
     }
 
-    public static void main ( String[] args ) {
+    public static void main(String[] args) {
         String[] strings1 = {"flower", "flow", "flight"};
         String[] strings2 = {"dog", "racecar", "car"};
         String[] strings3 = {};

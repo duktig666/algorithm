@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.other;
 
 /**
  * description:力扣第1137题  https://leetcode-cn.com/problems/n-th-tribonacci-number/

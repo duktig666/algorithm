@@ -253,12 +253,12 @@ public class SingleLinkedList<E> {
      * 寻找链表的中点（快慢指针）
      * 快指针是慢指针的2倍，快指针为空或者快指针的下一个节点为空，证明慢指针找到了链表的中点
      *
-     * @param node /
+     * @param head /
      * @return /
      */
-    public Node<E> findMidPoint(Node<E> node) {
-        Node<E> fast = node.next.next;
-        Node<E> slow = node.next;
+    public Node<E> findMidPoint(Node<E> head) {
+        Node<E> fast = head;
+        Node<E> slow = head;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             //链表的中点

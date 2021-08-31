@@ -18,7 +18,7 @@ package leetcode.linked;
  **/
 public class ReverseLinked_206 {
 
-    static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
 

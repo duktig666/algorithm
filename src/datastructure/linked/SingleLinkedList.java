@@ -342,20 +342,21 @@ public class SingleLinkedList<E> {
     }
 
     /**
-     * 判断链表是否是回文链表
-     *
-     * @param node /
-     * @return /
+     * 判断链表是否为回文链表
+     * 1. 寻找链表中点（如果是奇数，第二个节点为目标节点）
+     * 2. 反转前边的链表
+     * 3. 如果后半部分的链表是奇数（去掉后半部分的第一个节点）
+     * 4. 依次对比元素，判断是否为回文链表
      */
-    public boolean isPalindrome(Node<E> node) {
+    public boolean isPalindrome(Node<E> head) {
         //链表是空，或者只有一个元素
-        if (node == null || node.next == null) {
+        if (head == null || head.next == null) {
             return true;
         }
         //快慢指针找到链表的中点
         //快指针是慢指针的2倍，快指针为空或者快指针的下一个节点为空，证明慢指针找到了链表的中点
-        Node<E> fast = node.next.next;
-        Node<E> slow = node.next;
+        Node<E> fast = head;
+        Node<E> slow = head;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             //链表的中点
@@ -364,11 +365,11 @@ public class SingleLinkedList<E> {
         //翻转链表前半部分
         Node<E> pre = null;
         Node<E> temp = null;
-        while (node != slow) {
-            temp = node.next;
-            node.next = pre;
-            pre = node;
-            node = temp;
+        while (head != slow) {
+            temp = head.next;
+            head.next = pre;
+            pre = head;
+            head = temp;
         }
         /*
             //边移动（找中点），边反转

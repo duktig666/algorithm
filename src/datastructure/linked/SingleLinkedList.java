@@ -398,6 +398,22 @@ public class SingleLinkedList<E> {
         return true;
     }
 
+    /**
+     * 快慢指针判断链表是否成环，相交则说明链表成环
+     */
+    public boolean hasCycle(Node<E> head) {
+        Node<E> slow = head;
+        Node<E> fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();

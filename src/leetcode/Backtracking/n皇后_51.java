@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * description:
+ * description:N皇后 @see https://leetcode-cn.com/problems/n-queens/
  *
  * @author RenShiWei
  * Date: 2021/2/6 15:47
@@ -23,18 +23,19 @@ public class n皇后_51 {
                 chess[i][j] = '.';
             }
         }
+        // 记录n皇后的每种符合条件的情况
         List<List<String>> res = new ArrayList<>();
-        solve(res, chess, 0);
+        dfs(res, chess, 0);
         return res;
     }
 
-    private void solve(List<List<String>> res, char[][] chess, int row) {
+    private void dfs(List<List<String>> res, char[][] chess, int row) {
         //终止条件，最后一行都走完了，说明找到了一组，把它加入到集合res中
         if (row == chess.length) {
             res.add(construct(chess));
             return;
         }
-        //遍历每一行
+        //遍历每一列
         for (int col = 0; col < chess.length; col++) {
             //判断这个位置是否可以放皇后
             if (valid(chess, row, col)) {
@@ -43,28 +44,14 @@ public class n皇后_51 {
                 //在当前位置放个皇后
                 temp[row][col] = 'Q';
                 //递归到下一行继续
-                solve(res, temp, row + 1);
+                dfs(res, temp, row + 1);
             }
         }
     }
 
     /**
-     * 把二维数组chess中的数据copy一份
+     * 判断当前位置是否可以放置皇后
      *
-     * @param chess /
-     * @return /
-     */
-    private char[][] copy(char[][] chess) {
-        char[][] temp = new char[chess.length][chess[0].length];
-        for (int i = 0; i < chess.length; i++) {
-            for (int j = 0; j < chess[0].length; j++) {
-                temp[i][j] = chess[i][j];
-            }
-        }
-        return temp;
-    }
-
-    /**
      * @param chess /
      * @param row   第几行
      * @param col   第几列
@@ -106,18 +93,34 @@ public class n皇后_51 {
         return path;
     }
 
+    /**
+     * 把二维数组chess中的数据copy一份
+     *
+     * @param chess /
+     * @return /
+     */
+    private char[][] copy(char[][] chess) {
+        char[][] temp = new char[chess.length][chess[0].length];
+        for (int i = 0; i < chess.length; i++) {
+            for (int j = 0; j < chess[0].length; j++) {
+                temp[i][j] = chess[i][j];
+            }
+        }
+        return temp;
+    }
+
     /*
         ------------------回溯解决n皇后问题------------------------
      */
 
     /**
-     * 回溯解决n皇后问题
+     * 回溯解决n皇后问题（可替换上文的solve方法）
      *
      * @param res   /
      * @param chess /
      * @param row   /
      */
-    private void solve2(List<List<String>> res, char[][] chess, int row) {
+    private void dfsBacktrack(List<List<String>> res, char[][] chess, int row) {
         if (row == chess.length) {
             res.add(construct(chess));
             return;
@@ -125,12 +128,16 @@ public class n皇后_51 {
         for (int col = 0; col < chess.length; col++) {
             if (valid(chess, row, col)) {
                 chess[row][col] = 'Q';
-                solve2(res, chess, row + 1);
+                dfsBacktrack(res, chess, row + 1);
                 chess[row][col] = '.';
             }
         }
     }
 
+    public static void main(String[] args) {
+        n皇后_51 test = new n皇后_51();
+        System.out.println(test.solveNQueens(4));
+    }
 
 }
 

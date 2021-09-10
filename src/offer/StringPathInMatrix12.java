@@ -169,8 +169,16 @@ public class StringPathInMatrix12 {
 
     // ------------------LeetCode题解  代码优化----------------------
 
+    /**
+     * 判断指定路经是否存在
+     *
+     * @param board 矩阵
+     * @param word  路径字符串
+     * @return 是否存在路径
+     */
     public boolean exist2(char[][] board, String word) {
         char[] words = word.toCharArray();
+        // 依次从每个节点进行深搜，判断是否可得到路径
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if (dfs(board, words, i, j, 0)) {
@@ -191,9 +199,11 @@ public class StringPathInMatrix12 {
      */
     boolean dfs(char[][] board, char[] word, int i, int j, int k) {
         //递归终止条件
+        // 边界值判断 数组元素不等于第k个目标字符，直接剪枝
         if (i >= board.length || i < 0 || j >= board[0].length || j < 0 || board[i][j] != word[k]) {
             return false;
         }
+        // 最后一个字符也相等，说明存在这样的一条路径
         if (k == word.length - 1) {
             return true;
         }

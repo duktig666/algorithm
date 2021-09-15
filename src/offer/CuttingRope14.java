@@ -83,6 +83,57 @@ public class CuttingRope14 {
         return dp[n];
     }
 
+    /**
+     * 贪心算法实现 优化后
+     */
+    public int cuttingRopeByGreedy(int n) {
+        /*
+         *  三种特殊情况：
+         *  1、长度为1时，没法剪，最大乘积为0
+         *  2、长度为2时，最大乘积为1 × 1 = 1
+         *  3、长度为3时，最大乘积为1 × 2 = 2
+         */
+        if (n <= 3) {
+            return n - 1;
+        }
+        // 计算绳子每次剪3后的乘积
+        int res = 1;
+        while (n > 4) {
+            res *= 3;
+            n -= 3;
+        }
+        // 最后再乘上不能剪成3的，和可以剪成4（平分的）
+        return res * n;
+    }
+
+    /**
+     * 贪心算法实现 详细
+     */
+    public int cuttingRopeByGreedyDetail(int n) {
+        /*
+         *  三种特殊情况：
+         *  1、长度为1时，没法剪，最大乘积为0
+         *  2、长度为2时，最大乘积为1 × 1 = 1
+         *  3、长度为3时，最大乘积为1 × 2 = 2
+         */
+        if (n <= 3) {
+            return n - 1;
+        }
+
+        // 尽可能多的，计算绳子每次剪3 的次数
+        int threeCount = 0;
+        while (n > 4) {
+            n -= 3;
+            threeCount++;
+        }
+        return (int) Math.pow(3, threeCount) * n;
+    }
+
+    public static void main(String[] args) {
+        CuttingRope14 test = new CuttingRope14();
+        System.out.println(test.cuttingRopeByGreedyDetail(10)); // 36
+    }
+
 
 }
 

@@ -1,7 +1,7 @@
-package beauty.location;
+package leetcode.bitoperation;
 
 /**
- * 功能描述：算法——颠倒给定的 32 位无符号整数的二进制位
+ * 功能描述：190. 颠倒二进制位 @see https://leetcode-cn.com/problems/reverse-bits/
  * 示例 1：
  * 输入: 00000010100101000001111010011100
  * 输出: 00111001011110000010100101000000
@@ -33,7 +33,7 @@ package beauty.location;
  * @author RenShiWei
  * Date: 2020/3/5 21:33
  **/
-public class LeetCode_颠倒二进制位 {
+public class ReverseBits_190 {
 
     /**
      * 系统自带int翻转方法
@@ -72,6 +72,22 @@ public class LeetCode_颠倒二进制位 {
         }
         return ans;
     }
+
+    /**
+     * 上面方法比较容易理解的版本
+     * <p>
+     * 将 n 视作一个长为 32 的二进制串，从低位往高位枚举 n 的每一位，将其倒序添加到翻转结果 res 中
+     * 每枚举一位就将 n 右移一位，这样当前 n 的最低位就是我们要枚举的比特位。当 n 为 0 时即可结束循环。
+     */
+    public int reverseBits3Ext(int n) {
+        int res = 0;
+        for (int i = 0; i < 32 && n != 0; ++ i) {
+            res |= (n & 1) << (31 - i);
+            n >>>= 1;
+        }
+        return res;
+    }
+
 
     /**
      * LeetCode不能通过，原因——测试用例大于了int的范围

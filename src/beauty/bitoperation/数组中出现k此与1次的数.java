@@ -1,4 +1,4 @@
-package beauty.location;
+package beauty.bitoperation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,7 @@ public class 数组中出现k此与1次的数 {
      * @author RenShiWei
      * Date: 2020/3/4 19:39
      */
-    private static int findOneNum ( int[] arr, int k ) {
+    private static int findOneNum(int[] arr, int k) {
         int len = arr.length;
         //存每个数组元素的k进制的每一位
         char[][] kRadix = new char[len][];
@@ -60,7 +60,7 @@ public class 数组中出现k此与1次的数 {
         int res = 0;
         for (int i = 0; i < maxLen; i++) {
             //(int)(Math.pow(k,i))——k的i次方
-            res += (resArr[i]% k) * (int) (Math.pow(k, i));
+            res += (resArr[i] % k) * (int) (Math.pow(k, i));
         }
         return res;
     }
@@ -71,7 +71,7 @@ public class 数组中出现k此与1次的数 {
      * @author RenShiWei
      * Date: 2020/3/4 20:25
      */
-    private static int findOneNum2 ( int[] arr ) {
+    private static int findOneNum2(int[] arr) {
         Map<Integer, Integer> arrMap = new HashMap<>();
         for (int value : arr) {
             if (arrMap.containsKey(value)) {
@@ -88,7 +88,7 @@ public class 数组中出现k此与1次的数 {
         return 0;
     }
 
-    public static void main ( String[] args ) {
+    public static void main(String[] args) {
         int[] arr = {1, 1, 1, 2, 2, 2, 6, 5, 5, 5};
         System.out.println(findOneNum(arr, 3));
         System.out.println(findOneNum2(arr));

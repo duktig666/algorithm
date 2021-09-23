@@ -1,4 +1,4 @@
-package beauty.location;
+package beauty.bitoperation;
 
 import beauty.utils.Util;
 

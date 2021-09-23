@@ -1,4 +1,4 @@
-package beauty.location;
+package beauty.bitoperation;
 
 /**
  * 功能描述：算法——删除排序数组中的重复项
@@ -23,7 +23,7 @@ public class 删除排序数组中的重复项_26_leetcode {
     /**
      * 方法一:每次遇到重复的数，将第二个一次移动到当前length的最后一个位置
      */
-    public static int removeDuplicates ( int[] nums ) {
+    public static int removeDuplicates(int[] nums) {
         //记录去除重复的数组长度
         int length = nums.length;
         //快慢指针
@@ -48,7 +48,7 @@ public class 删除排序数组中的重复项_26_leetcode {
     /**
      * 方法二———对方法一进行优化
      */
-    public static int removeDuplicates2 ( int[] nums ) {
+    public static int removeDuplicates2(int[] nums) {
         //记录去除重复的数组长度
         int length = nums.length;
         //快慢指针
@@ -72,6 +72,7 @@ public class 删除排序数组中的重复项_26_leetcode {
     /**
      * 方法三——遇到不重复的数，直接在原数组中从0开始赋值（改变了原有数组的数据量）
      * 官方题解
+     *
      * @param nums
      * @return
      */
@@ -90,14 +91,14 @@ public class 删除排序数组中的重复项_26_leetcode {
     }
 
 
-    public static void swapArr ( int[] arr, int i, int j ) {
+    public static void swapArr(int[] arr, int i, int j) {
         arr[i] = arr[i] ^ arr[j];
         arr[j] = arr[i] ^ arr[j];
         arr[i] = arr[i] ^ arr[j];
     }
 
-    public static void main ( String[] args ) {
-        int[] arr={1,1,2};
+    public static void main(String[] args) {
+        int[] arr = {1, 1, 2};
         System.out.println(removeDuplicates2(arr));
     }
 

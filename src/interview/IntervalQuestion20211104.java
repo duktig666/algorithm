@@ -50,8 +50,7 @@ public class IntervalQuestion20211104 {
      * 2. 相邻区间，临界值的分配问题
      * ① 同一个数既在左区间，又在右区间怎么分配？
      * ② 统计这个临界值在左区间和右区间出现的次数
-     * ③ 左区间出现多，分配在右区间。右区间出现多，这个值分配在左区间
-     * （可能出现极端情况左边特别多，如果放在左边，可能会造成倾斜，如果放在右边因为是右区间的第一个数，所以倾斜概率大大降低）
+     * ③ 左区间出现多，分配在左区间。右区间出现多，这个值分配在右区间
      * 3. 每次分配完成后，计算重要数据如下：
      * ① 记录上一次区间的临界值，方便计算数量
      * ② 计算下一个区间的临界值（默认+100）
@@ -81,7 +80,7 @@ public class IntervalQuestion20211104 {
                 rightIndex++;
                 rightCount++;
             }
-            // 临界值左边数量多，放右边；反之亦然
+            // 临界值左边数量多，放左边；反之亦然 criticalIndex = rightIndex(大的索引，即放左边的意思)
             criticalIndex = leftCount >= rightCount ? rightIndex : leftIndex;
             //当前区间元素数量
             int countInterval = criticalIndex - nextInterval;

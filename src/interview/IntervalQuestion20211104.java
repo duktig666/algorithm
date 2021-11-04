@@ -61,8 +61,8 @@ public class IntervalQuestion20211104 {
         List<Integer> randomList = this.prepare();
         // 每次分区的临界值
         int criticalValue;
-        // 每次分区的临界索引
-        int criticalIndex = 100;
+        // 每次分区的临界索引（第100个元素）
+        int criticalIndex = 99;
         int nextInterval = 0;
         // 分配9个区间
         for (int i = 1; i < 10; i++) {

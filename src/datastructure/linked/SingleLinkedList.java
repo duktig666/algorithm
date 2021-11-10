@@ -323,7 +323,7 @@ public class SingleLinkedList<E> {
             return head;
         }
         /*
-            临时节点，用于存储下一个节点，当指针反转后，还能指向写一个节点
+            临时节点，用于存储下一个节点，当指针反转后，还能指向前一个节点
             此时head=3结点，temp=3结点.next(实际上是4结点)
             执行Node newHead = reverse(head.next);传入的head.next是4结点，返回的newHead是4结点
          */

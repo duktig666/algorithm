@@ -1,6 +1,8 @@
 package leetcode.codetop;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -42,6 +44,33 @@ public class LongerSubstring_3 {
             maxLength = Math.max(maxLength, r - i + 1);
         }
         return maxLength;
+    }
+
+    /**
+     * 按照滑动窗口 框架 来写
+     */
+    public int lengthOfLongestSubstringFrame(String s) {
+        Map<Character, Integer> window = new HashMap<>();
+        int left = 0, right = 0;
+        // 记录结果
+        int res = 0;
+        while (right < s.length()) {
+            // c 是将移⼊窗⼝的字符
+            char c = s.charAt(right);
+            right++;
+            // 进⾏窗⼝内数据的⼀系列更新
+            window.put(c, window.getOrDefault(c, 0) + 1);
+            // 判断左侧窗⼝是否要收缩
+            while (window.get(c) > 1) {
+                char d = s.charAt(left);
+                left++;
+                // 进⾏窗⼝内数据的⼀系列更新
+                window.put(d, window.get(d) - 1);
+            }
+            // 在这⾥更新答案
+            res = Integer.max(res, right - left);
+        }
+        return res;
     }
 
     public static void main(String[] args) {

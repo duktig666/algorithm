@@ -10,7 +10,7 @@ package leetcode.linked;
  * @author RenShiWei
  * Date: 2021/9/6 20:43
  **/
-public class LinkedHasCycle_141 {
+public class 单链表是否有环_141 {
 
     private static class ListNode {
         int val;
@@ -30,8 +30,7 @@ public class LinkedHasCycle_141 {
      * 快慢指针判断链表是否成环
      */
     public boolean hasCycle(ListNode head) {
-        ListNode slow = head;
-        ListNode fast = head;
+        ListNode slow = head, fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;

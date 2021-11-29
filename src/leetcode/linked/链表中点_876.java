@@ -6,7 +6,7 @@ package leetcode.linked;
  * @author RenShiWei
  * Date: 2021/8/31 9:39
  **/
-public class MiddleNode_876 {
+public class 链表中点_876 {
 
     private static class ListNode {
         int val;

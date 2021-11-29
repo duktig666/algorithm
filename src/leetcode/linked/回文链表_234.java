@@ -6,7 +6,7 @@ package leetcode.linked;
  * @author RenShiWei
  * Date: 2021/9/6 17:59
  **/
-public class PalindromeLinked_234 {
+public class 回文链表_234 {
 
     private static class ListNode {
         int val;

@@ -56,27 +56,49 @@ public class 反转链表_206 {
      * 递归实现链表反转
      */
     public ListNode reverse(ListNode head) {
-        //当前节点为null，或者写一个节点为null，结束递归（递归过程需要判断下一个节点，所以也要判断）
+        //当前节点为null，或者前一个节点为null，结束递归（递归过程需要判断下一个节点，所以也要判断）
         if (head == null || head.next == null) {
             return head;
         }
-        /*
-            临时节点，用于存储下一个节点，当指针反转后，还能指向写一个节点
-            此时head=3结点，temp=3结点.next(实际上是4结点)
-            执行Node newHead = reverse(head.next);传入的head.next是4结点，返回的newHead是4结点
-         */
-        ListNode temp = head.next;
         //进入递归，返回值相当于当前节点
-        ListNode newNode = reverse(head.next);
-        /*
-           弹栈过程:
-            程序继续执行 temp.next = head就相当于4->3 （temp相当于下一个节点，temp.next相当于下一个节点的指针；即下一个节点指向当前节点，实现反转）
-            head.next = null 即把3结点指向4结点的指针断掉
-            返回新链表的头结点newHead
-         */
-        temp.next = head;
+        ListNode last = reverse(head.next);
+        head.next.next = head;
         head.next = null;
-        return newNode;
+        return last;
+    }
+
+    // 后驱节点
+    ListNode successor = null;
+
+    /**
+     * 将链表的前 n 个节点反转（n <= 链表⻓度）
+     */
+    public ListNode reverseN(ListNode head, int n) {
+        if (n == 1) {
+            // 记录第 n + 1 个节点
+            successor = head.next;
+            return head;
+        }
+        // 以 head.next 为起点，需要反转前 n - 1 个节点
+        ListNode last = reverseN(head.next, n - 1);
+
+        head.next.next = head;
+        // 让反转之后的 head 节点和后⾯的节点连起来
+        head.next = successor;
+        return last;
+    }
+
+    /**
+     * 给⼀个索引区间 [m,n]（索引从 1 开始），仅仅反转区间中的链表元素
+     */
+    ListNode reverseBetween(ListNode head, int m, int n) {
+        // base case
+        if (m == 1) {
+            return reverseN(head, n);
+        }
+        // 前进到反转的起点触发 base case
+        head.next = reverseBetween(head.next, m - 1, n - 1);
+        return head;
     }
 
 }

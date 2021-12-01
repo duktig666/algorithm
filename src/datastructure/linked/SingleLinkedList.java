@@ -318,27 +318,16 @@ public class SingleLinkedList<E> {
      * @return 反转后的链表
      */
     public Node<E> reverse(Node<E> head) {
-        //当前节点为null，或者写一个节点为null，结束递归（递归过程需要判断下一个节点，所以也要判断）
-        if (null == head || null == head.next) {
+        //当前节点为null，或者前一个节点为null，结束递归（递归过程需要判断下一个节点，所以也要判断）
+        if (head == null || head.next == null) {
             return head;
         }
-        /*
-            临时节点，用于存储下一个节点，当指针反转后，还能指向前一个节点
-            此时head=3结点，temp=3结点.next(实际上是4结点)
-            执行Node newHead = reverse(head.next);传入的head.next是4结点，返回的newHead是4结点
-         */
-        Node<E> temp = head.next;
         //进入递归，返回值相当于当前节点
-        Node<E> newHead = reverse(head.next);
-        /*
-           弹栈过程:
-            程序继续执行 temp.next = head就相当于4->3 （temp相当于下一个节点，temp.next相当于下一个节点的指针；即下一个节点指向当前节点，实现反转）
-            head.next = null 即把3结点指向4结点的指针断掉
-            返回新链表的头结点newHead
-         */
-        temp.next = head;
+        Node<E> last = reverse(head.next);
+        head.next.next = head;
         head.next = null;
-        return newHead;
+        return last;
+
     }
 
     /**

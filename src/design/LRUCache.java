@@ -123,7 +123,7 @@ public class LRUCache<K, V> {
     /**
      * 双向链表
      */
-    static class DoubleList<K, V> {
+    private static class DoubleList<K, V> {
         // 头尾虚节点
         private Node<K, V> head, tail;
         // 链表元素数

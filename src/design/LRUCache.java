@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * description:LRU缓存设计
+ * description:LRU缓存设计——自定义实现
  * <p>
  * 默认从链表尾部添加元素，靠近尾部为最近使用的，靠近头部是最久未使用的
  *
@@ -98,13 +98,14 @@ public class LRUCache<K, V> {
             return;
         }
 
-        if (capacity == cache.size()) {
+        if (cache.size() >= capacity) {
             // 删除最久未使⽤的元素
-            removeLeastRecently();
+            this.removeLeastRecently();
         }
         // 添加为最近使⽤的元素
         addRecently(key, val);
     }
+
 
     /**
      * 双向链表的节点

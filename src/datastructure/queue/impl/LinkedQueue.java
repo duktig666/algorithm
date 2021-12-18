@@ -106,7 +106,7 @@ public class LinkedQueue<E> implements Queue<E> {
      * @return 队首元素
      */
     @Override
-    public E getHead() {
+    public E peek() {
         if (isEmpty()) {
             throw new IllegalArgumentException("Queue is empty.");
         }

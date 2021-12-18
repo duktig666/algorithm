@@ -38,6 +38,6 @@ public interface Queue<E> {
      *
      * @return 队首元素
      */
-    E getHead();
+    E peek();
 
 }

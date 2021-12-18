@@ -93,7 +93,7 @@ public class ArrayQueue<E> implements Queue<E> {
      * @return 队首元素
      */
     @Override
-    public E getHead() {
+    public E peek() {
         return data[front];
     }
 
@@ -159,7 +159,7 @@ public class ArrayQueue<E> implements Queue<E> {
                     System.out.printf("出队元素：%d\n", queue.poll());
                     break;
                 case 'h':
-                    System.out.printf("队首元素：%d\n", queue.getHead());
+                    System.out.printf("队首元素：%d\n", queue.peek());
                     break;
                 case 'n':
                     System.out.println("队空：" + queue.isEmpty());

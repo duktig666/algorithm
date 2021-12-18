@@ -72,7 +72,7 @@ public class StackQueue<E> implements Queue<E> {
      * @return 队首元素
      */
     @Override
-    public E getHead() {
+    public E peek() {
         if (stack1.empty() && stack2.empty()) {
             throw new RuntimeException("Queue is null.Don't delete!");
         }

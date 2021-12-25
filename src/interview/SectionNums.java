@@ -11,13 +11,13 @@ import java.util.List;
  * 然后将numList中的元素从小到大排序，排除掉最大的10%的元素后;
  * 在numList剩下的90%的元素中,取最大值maxValue和最小值 minValue，
  * 将区间[minValue, maxValue]分成9个区间（尽量保证每个区间的宽度相等或接近);在这9个区间中，统计numList中的元素分别落在每个区间中的个数。
+ * <p>
+ * 上海 望繁信 笔试题
  *
  * @author RenShiWei
- * Date: 2021/11/4 16:42
- * blog: https://duktig.cn/
- * github知识库: https://github.com/duktig666/knowledge
+ * Date: 2021/12/25
  **/
-public class IntervalQuestion20211104 {
+public class SectionNums {
 
     /**
      * 初始化1000个元素的几个，每个元素是1-100的随机数
@@ -95,7 +95,7 @@ public class IntervalQuestion20211104 {
      * 测试
      */
     public static void main(String[] args) {
-        IntervalQuestion20211104 test = new IntervalQuestion20211104();
+        SectionNums test = new SectionNums();
         test.distributeInterval();
     }
 

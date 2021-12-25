@@ -1,4 +1,4 @@
-package leetcode.linked;
+package leetcode.codetop;
 
 /**
  * description: 反转链表 @see https://leetcode-cn.com/problems/reverse-linked-list/

@@ -11,13 +11,13 @@ import java.util.Scanner;
  * 0  0  4  6  6  5  5  3  4  0  0
  * 0  5  10 12 11 10 8  7  4  5  0
  * 6  15 22 23 21 18 15 11 9  5  6
+ * <p>
+ * 上海 望繁信 笔试题
  *
  * @author RenShiWei
- * Date: 2021/11/4 15:16
- * blog: https://duktig.cn/
- * github知识库: https://github.com/duktig666/knowledge
+ * Date: 2021/12/25 9:35
  **/
-public class JiaoQianJin20211104 {
+public class TriangleLastSum {
 
     public static void main(String[] args) {
         // 输入层数

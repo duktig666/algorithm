@@ -37,17 +37,17 @@ public class 反转链表_206 {
      */
     public ListNode reverseList(ListNode head) {
         //临时保存上一节点
-        ListNode pre = null;
-        while (head != null) {
+        ListNode pre = null, cur = head, nextTemp = null;
+        while (cur != null) {
             //临时节点，用于存储下一个节点，当指针反转后，还能指向写一个节点
-            ListNode temp = head.next;
+            nextTemp = cur.next;
             // 反转指针
-            head.next = pre;
+            cur.next = pre;
 
             // pre移动到当前节点，用于下一个循环进行比对
-            pre = head;
+            pre = cur;
             //头结点指向下一个节点，并进入下一个循环
-            head = temp;
+            cur = nextTemp;
         }
         return pre;
     }

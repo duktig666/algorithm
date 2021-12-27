@@ -12,8 +12,25 @@ import java.util.List;
  * blog: https://duktig.cn/
  * github知识库: https://github.com/duktig666/knowledge
  **/
-public class ThreeNumSum_15 {
+public class 三数之和_15 {
 
+    /**
+     * 思路：
+     * 1. 数组元素排序
+     * 2. 遍历（到倒数第三个元素截止）
+     * 3. for循环需要遍历每一个元素，然后再进行双指针判断
+     * 3.1 如果第一个数大于0，后边都比它大，不成立，直接退出遍历
+     * 3.2 去掉重复的情况，如果当前元素与前一个元素相同，continue
+     * 3.2 第一个元素取反，target 等于 剩下两个元素的和，即条件成立
+     * 4. 双指针，判断剩下两个元素和是否等于 target
+     * 4.1 nums[left] + nums[right] == target
+     * 4.1.1 添加到结果集合
+     * 4.1.2 left++ right--
+     * 4.1.3 left和right与前一个元素相同，继续走（结果集合不添加 重复结果）
+     * 4.2 小于 left++
+     * 4.3 大于 right--
+     * 5. 进入下一次for循环
+     */
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> sumList = new ArrayList<>();
         if (nums == null || nums.length < 3) {
@@ -58,7 +75,7 @@ public class ThreeNumSum_15 {
     }
 
     public static void main(String[] args) {
-        ThreeNumSum_15 test = new ThreeNumSum_15();
+        三数之和_15 test = new 三数之和_15();
         int[] nums = new int[] {- 1, 0, 1, 2, - 1, - 4};
         System.out.println(test.threeSum(nums));
     }

@@ -14,9 +14,7 @@ public class 两数之和_1 {
 
     /**
      * 思路：
-     * 1. 最原始的思路，使用双重for循环，遍历两数的结果（直接从当前i之后进行第二次遍历）
-     * 但是这样的解法，时间复杂度是O(n)，空间复杂度O(1)
-     * 2. 可以使用 map 记录元素及下标，然后再次进行比对。时间复杂度是O(1)，空间复杂度O(1)
+     * 1. 可以使用 map 记录元素及下标，然后再次进行比对。时间复杂度是O(1)，空间复杂度O(1)
      */
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>(2);
@@ -29,7 +27,23 @@ public class 两数之和_1 {
         return null;
     }
 
+    public int[] twoSum1(int[] nums, int target) {
+        int l = nums.length;
+        for (int i = 0; i < l / 2; i++) {
+            for (int j = i + 1; j < l; j++) {
+                if (nums[i] + nums[j] == target) {
+                    return new int[] {i, j};
+                }
+                if (nums[l - 1 - i] + nums[j] == target) {
+                    return new int[] {l - 1 - i, j};
+                }
+            }
+        }
+        return new int[0];
+    }
+
     /**
+     * failure
      * 思路：
      * 1. 先对数组进行排序
      * 2. 定义双指针，右指针找到 小于等于 target的元素

@@ -11,13 +11,30 @@ import java.util.Map;
  *
  * @author RenShiWei
  * Date: 2021/11/9 20:55
- * blog: https://duktig.cn/
- * github知识库: https://github.com/duktig666/knowledge
  * <p>
  * Your LRUCache object will be instantiated and called as such:
  * LRUCache obj = new LRUCache(capacity);
  * int param_1 = obj.get(key);
  * obj.put(key,value);
+ * <p>
+ * 思路：
+ * 1. 预先写好一些私有方法
+ * 1.1 添加元素到头结点
+ * 1.2 删除指定节点
+ * 1.3 删除尾节点
+ * 1.4 移动节点到头结点（先删除节点，再添加到头结点）
+ * 2. 查询元素
+ * 2.1 如果不存在元素，返回特定值/抛出异常
+ * 2.2 如果存在，将此节点移动到头结点，并返回其value值
+ * 3. 添加/修改元素
+ * 3.1 先在map中查询此元素是否存在
+ * 3.2 不存在的情况
+ * 3.2.1 先创建元素，并添加到头结点
+ * 3.2.2 将节点在map中添加
+ * 3.2.3 如果超过容量，删除尾节点，并删除map中尾节点的缓存
+ * 3.3 存在的情况
+ * 3.3.1 修改节点的元素值
+ * 3.3.2 将此节点移动到头结点
  **/
 public class LRUCache {
 

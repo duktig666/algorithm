@@ -26,6 +26,7 @@ public class 合并两个有序链表_21 {
      * 思路：
      * 1. 设置虚拟头结点（方便返回头结点），设置新的节点p 指向虚拟头结点
      * 2. 循环遍历，谁的元素小指向谁
+     * 3. 最后，另一条链可能还存在节点，续上
      */
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         // 虚拟头结点作用：并不知道谁的节点小，方便计算

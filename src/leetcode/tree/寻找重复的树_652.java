@@ -1,5 +1,7 @@
 package leetcode.tree;
 
+import common.TreeNode;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,22 +14,6 @@ import java.util.Map;
  * Date: 2021/12/16 10:28
  **/
 public class 寻找重复的树_652 {
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {}
-
-        TreeNode(int val) { this.val = val; }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     /** 记录所有子树以及出现的次数 */
     Map<String, Integer> memo = new HashMap<>();

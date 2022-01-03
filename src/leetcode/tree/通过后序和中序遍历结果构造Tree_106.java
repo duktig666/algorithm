@@ -1,5 +1,7 @@
 package leetcode.tree;
 
+import common.TreeNode;
+
 /**
  * description:
  *
@@ -7,22 +9,6 @@ package leetcode.tree;
  * Date: 2021/12/9 14:36
  **/
 public class 通过后序和中序遍历结果构造Tree_106 {
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {}
-
-        TreeNode(int val) { this.val = val; }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     /**
      * 主函数

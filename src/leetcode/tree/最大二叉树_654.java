@@ -1,5 +1,7 @@
 package leetcode.tree;
 
+import common.TreeNode;
+
 /**
  * description:https://leetcode-cn.com/problems/maximum-binary-tree/
  *
@@ -7,22 +9,6 @@ package leetcode.tree;
  * Date: 2021/12/9 11:13
  **/
 public class 最大二叉树_654 {
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {}
-
-        TreeNode(int val) { this.val = val; }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     /**
      * 主函数

@@ -1,5 +1,7 @@
 package leetcode.tree;
 
+import common.TreeNode;
+
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
@@ -13,22 +15,6 @@ import java.util.Queue;
  * Date: 2021/12/16 11:03
  **/
 public class 二叉树的序列化与反序列化_297 {
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {}
-
-        TreeNode(int val) { this.val = val; }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     /**
      * 前序遍历

@@ -1,4 +1,6 @@
-package leetcode.tree;
+package leetcode.tree.bst;
+
+import common.TreeNode;
 
 /**
  * description:
@@ -7,22 +9,6 @@ package leetcode.tree;
  * Date: 2021/12/17 11:06
  **/
 public class 二叉搜索子树的最大键值和_1373 {
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {}
-
-        TreeNode(int val) { this.val = val; }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     /**
      * 可以尝试使用 class 来优化 int[],提高可读性

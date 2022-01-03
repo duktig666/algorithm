@@ -89,6 +89,7 @@ public class 反转链表_206 {
     }
 
     /**
+     * 递归实现
      * 给⼀个索引区间 [m,n]（索引从 1 开始），仅仅反转区间中的链表元素
      */
     ListNode reverseBetween(ListNode head, int m, int n) {
@@ -100,6 +101,39 @@ public class 反转链表_206 {
         head.next = reverseBetween(head.next, m - 1, n - 1);
         return head;
     }
+
+    /**
+     * 迭代实现
+     * 给⼀个索引区间 [m,n]（索引从 1 开始），仅仅反转区间中的链表元素
+     * 思路：
+     * 1. pre 寻找到 left 的前一个元素
+     * 2. 遍历，每次将元素移动到最前边（移动n-1次）
+     * <p>
+     * 指针含义：
+     * cur：指向待反转区域的第一个节点 left；
+     * next：永远指向 cur 的下一个节点，循环过程中，cur 变化以后 next 会变化；
+     * pre：永远指向待反转区域的第一个节点 left 的前一个节点，在循环过程中不变。
+     */
+    public ListNode reverseBetweenLoop(ListNode head, int left, int right) {
+        // 设置 dummyNode 是这一类问题的一般做法
+        ListNode dummyNode = new ListNode(- 1);
+        dummyNode.next = head;
+        ListNode pre = dummyNode;
+        // pre 找到 left 的前一个节点
+        for (int i = 0; i < left - 1; i++) {
+            pre = pre.next;
+        }
+        ListNode cur = pre.next;
+        ListNode next;
+        for (int i = 0; i < right - left; i++) {
+            next = cur.next;
+            cur.next = next.next;
+            next.next = pre.next;
+            pre.next = next;
+        }
+        return dummyNode.next;
+    }
+
 
 }
 

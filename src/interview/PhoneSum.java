@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * description: 朋友的小红书 二面 算法
@@ -54,7 +55,7 @@ public class PhoneSum {
 
     public PhoneSum() {
         charMap = new HashMap<>(32);
-        countMap = new HashMap<>();
+        countMap = new TreeMap<>();
         // A 65
         int word = 65;
         int num = 1;
@@ -93,7 +94,9 @@ public class PhoneSum {
 
     private void printPhone() {
         for (Map.Entry<String, Integer> entry : countMap.entrySet()) {
-            System.out.println(entry.getKey() + " " + entry.getValue());
+            if (entry.getValue() > 1) {
+                System.out.println(entry.getKey() + " " + entry.getValue());
+            }
         }
     }
 

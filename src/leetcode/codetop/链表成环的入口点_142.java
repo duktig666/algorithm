@@ -1,4 +1,4 @@
-package leetcode.linked;
+package leetcode.codetop;
 
 /**
  * description:https://leetcode-cn.com/problems/c32eOV/
@@ -6,7 +6,7 @@ package leetcode.linked;
  * @author RenShiWei
  * Date: 2021/11/29 20:44
  **/
-public class 链表成环的入口点 {
+public class 链表成环的入口点_142 {
 
     private static class ListNode {
         int val;

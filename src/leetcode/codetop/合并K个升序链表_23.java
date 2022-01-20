@@ -24,6 +24,14 @@ public class 合并K个升序链表_23 {
         }
     }
 
+    /**
+     * 思路：
+     * 1. 虚拟头结点，方便返回结果；res = dummy
+     * 2. 优先队列添加所有链表头结点（小根堆）
+     * 3. 当优先队列不为null，每次取出队首元素（最小节点），连接到结果链表上
+     * 4. 将连接到res的下一个节点（不为null时），添加到优先队列中
+     * 5. 返回 dummy.next
+     */
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0) {
             return null;

@@ -11,10 +11,6 @@ import java.util.List;
  **/
 public class n皇后_51 {
 
-    /*
-        ----------------------递归解决n皇后问题-------------------------
-     */
-
     public List<List<String>> solveNQueens(int n) {
         char[][] chess = new char[n][n];
         //初始化数组
@@ -25,26 +21,27 @@ public class n皇后_51 {
         }
         // 记录n皇后的每种符合条件的情况
         List<List<String>> res = new ArrayList<>();
-        dfs(res, chess, 0);
+        dfsBacktrack(res, chess, 0);
         return res;
     }
 
-    private void dfs(List<List<String>> res, char[][] chess, int row) {
-        //终止条件，最后一行都走完了，说明找到了一组，把它加入到集合res中
+    /**
+     * 回溯解决n皇后问题
+     *
+     * @param res   /
+     * @param chess /
+     * @param row   /
+     */
+    private void dfsBacktrack(List<List<String>> res, char[][] chess, int row) {
         if (row == chess.length) {
             res.add(construct(chess));
             return;
         }
-        //遍历每一列
         for (int col = 0; col < chess.length; col++) {
-            //判断这个位置是否可以放皇后
             if (valid(chess, row, col)) {
-                //数组复制一份
-                char[][] temp = copy(chess);
-                //在当前位置放个皇后
-                temp[row][col] = 'Q';
-                //递归到下一行继续
-                dfs(res, temp, row + 1);
+                chess[row][col] = 'Q';
+                dfsBacktrack(res, chess, row + 1);
+                chess[row][col] = '.';
             }
         }
     }
@@ -109,27 +106,26 @@ public class n皇后_51 {
         return temp;
     }
 
-    /*
-        ------------------回溯解决n皇后问题------------------------
-     */
 
     /**
-     * 回溯解决n皇后问题（可替换上文的solve方法）
-     *
-     * @param res   /
-     * @param chess /
-     * @param row   /
+     * dfs 解题
      */
-    private void dfsBacktrack(List<List<String>> res, char[][] chess, int row) {
+    private void dfs(List<List<String>> res, char[][] chess, int row) {
+        //终止条件，最后一行都走完了，说明找到了一组，把它加入到集合res中
         if (row == chess.length) {
             res.add(construct(chess));
             return;
         }
+        //遍历每一列
         for (int col = 0; col < chess.length; col++) {
+            //判断这个位置是否可以放皇后
             if (valid(chess, row, col)) {
-                chess[row][col] = 'Q';
-                dfsBacktrack(res, chess, row + 1);
-                chess[row][col] = '.';
+                //数组复制一份
+                char[][] temp = copy(chess);
+                //在当前位置放个皇后
+                temp[row][col] = 'Q';
+                //递归到下一行继续
+                dfs(res, temp, row + 1);
             }
         }
     }

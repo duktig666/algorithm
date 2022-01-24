@@ -51,5 +51,29 @@ public class 最大子数组和_53 {
         return res;
     }
 
+    /**
+     * 动态规划 优化空间复杂度为 O(n)
+     * 动态规划时，顺便记录 最大值
+     */
+    public int maxSubArrayDP2(int[] nums) {
+        int n = nums.length;
+        if (n == 0) {
+            return 0;
+        }
+        // base case，前一次计算结果
+        int dp0 = nums[0];
+        int dp1 = 0, res = dp0;
+
+        for (int i = 1; i < n; i++) {
+            // dp[i] = max(nums[i], nums[i] + dp[i-1])
+            dp1 = Math.max(nums[i], nums[i] + dp0);
+            dp0 = dp1;
+            // 顺便计算最大的结果
+            res = Math.max(res, dp1);
+        }
+
+        return res;
+    }
+
 }
 

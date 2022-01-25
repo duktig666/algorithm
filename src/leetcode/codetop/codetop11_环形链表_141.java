@@ -6,7 +6,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2021/12/14 21:06
  **/
-public class 环形链表_141 {
+public class codetop11_环形链表_141 {
 
     static class ListNode {
         int val;

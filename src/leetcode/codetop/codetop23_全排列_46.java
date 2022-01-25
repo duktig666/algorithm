@@ -9,7 +9,7 @@ import java.util.List;
  * @author RenShiWei
  * Date: 2022/1/3 14:03
  **/
-public class 全排列_46 {
+public class codetop23_全排列_46 {
 
     List<List<Integer>> res = new LinkedList<>();
 

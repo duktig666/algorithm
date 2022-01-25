@@ -8,7 +8,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2021/12/23 21:43
  **/
-public class 最长回文子串_5 {
+public class codetop19_最长回文子串_5 {
 
     public String longestPalindrome(String s) {
         String res = "";

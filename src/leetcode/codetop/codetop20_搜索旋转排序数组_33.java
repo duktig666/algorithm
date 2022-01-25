@@ -6,7 +6,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2022/1/3 9:36
  **/
-public class 搜索旋转排序数组_33 {
+public class codetop20_搜索旋转排序数组_33 {
 
     /**
      * 二分查找法

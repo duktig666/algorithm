@@ -6,7 +6,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2021/12/20 9:26
  **/
-public class 二叉树的最近公共祖先_236 {
+public class codetop17_二叉树的最近公共祖先_236 {
 
     private static class TreeNode {
         int val;

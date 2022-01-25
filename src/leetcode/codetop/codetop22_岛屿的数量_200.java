@@ -6,7 +6,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2021/12/18 17:30
  **/
-public class 岛屿的数量_200 {
+public class codetop22_岛屿的数量_200 {
 
     /** 海洋 */
     final int ZERO = '0';

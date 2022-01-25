@@ -6,7 +6,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2022/1/25 21:17
  **/
-public class 接雨水_42 {
+public class codetop30_接雨水_42 {
 
     /**
      * 双指针：

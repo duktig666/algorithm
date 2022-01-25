@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
  * @author RenShiWei
  * Date: 2021/11/29 16:17
  **/
-public class 合并K个升序链表_23 {
+public class codetop26_合并K个升序链表_23 {
 
     public static class ListNode {
         int val;

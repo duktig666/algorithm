@@ -15,7 +15,7 @@ import java.util.Set;
  * blog: https://duktig.cn/
  * github知识库: https://github.com/duktig666/knowledge
  **/
-public class 无重复字符的最长子串_3 {
+public class codetop3_无重复字符的最长子串_3 {
 
     /**
      * 滑动窗口
@@ -74,7 +74,7 @@ public class 无重复字符的最长子串_3 {
     }
 
     public static void main(String[] args) {
-        无重复字符的最长子串_3 test = new 无重复字符的最长子串_3();
+        codetop3_无重复字符的最长子串_3 test = new codetop3_无重复字符的最长子串_3();
         System.out.println(test.lengthOfLongestSubstring("bbbb"));
         System.out.println(test.lengthOfLongestSubstring(""));
         System.out.println(test.lengthOfLongestSubstring("pwwkew"));

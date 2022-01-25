@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author RenShiWei
  * Date: 2021/12/16 9:13
  **/
-public class 买卖股票的最佳时机_121 {
+public class codetop13_买卖股票的最佳时机_121 {
 
     /**
      * 思路：

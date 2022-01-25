@@ -12,7 +12,7 @@ import java.util.OptionalInt;
  * @author RenShiWei
  * Date: 2021/12/9 19:19
  **/
-public class 最大子数组和_53 {
+public class codetop8_最大子数组和_53 {
 
     /**
      * 贪心思路：若当前指针所指元素之前的和小于0，则丢弃当前元素之前的数列

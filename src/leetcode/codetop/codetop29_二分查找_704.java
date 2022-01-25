@@ -9,7 +9,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2022/1/21 16:47
  **/
-public class 二分查找_704 {
+public class codetop29_二分查找_704 {
 
     public int search(int[] nums, int target) {
         int l = 0, r = nums.length - 1;

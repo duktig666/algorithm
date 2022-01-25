@@ -10,7 +10,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2021/12/23 20:36
  **/
-public class 字符串相加_415 {
+public class codetop21_字符串相加_415 {
 
     public String addStrings(String num1, String num2) {
         int i = num1.length() - 1, j = num2.length() - 1;

@@ -8,7 +8,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2021/12/16 10:10
  **/
-public class 相交链表_160 {
+public class codetop14_相交链表_160 {
 
     private static class ListNode {
         int val;

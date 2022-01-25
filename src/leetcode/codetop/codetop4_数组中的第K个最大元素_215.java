@@ -13,7 +13,7 @@ import java.util.PriorityQueue;
  * blog: https://duktig.cn/
  * github知识库: https://github.com/duktig666/knowledge
  **/
-public class 数组中的第K个最大元素_215 {
+public class codetop4_数组中的第K个最大元素_215 {
 
     /**
      * 方法一：调用 api 直接破解

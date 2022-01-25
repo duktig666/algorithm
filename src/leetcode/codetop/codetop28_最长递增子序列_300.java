@@ -12,7 +12,7 @@ import java.util.Arrays;
  * @author RenShiWei
  * Date: 2022/1/21 16:55
  **/
-public class 最长递增子序列_300 {
+public class codetop28_最长递增子序列_300 {
 
     /**
      * 方法一：动态规划

@@ -6,7 +6,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2021/12/25 10:34
  **/
-public class K个一组翻转链表_25 {
+public class codetop5_K个一组翻转链表_25 {
 
     private static class ListNode {
         int val;

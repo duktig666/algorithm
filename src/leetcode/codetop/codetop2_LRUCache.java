@@ -36,7 +36,7 @@ import java.util.Map;
  * 3.3.1 修改节点的元素值
  * 3.3.2 将此节点移动到头结点
  **/
-public class LRUCache {
+public class codetop2_LRUCache {
 
     private static class DoubleLinkedNode {
         int k;
@@ -57,7 +57,7 @@ public class LRUCache {
     private int capacity;
     private DoubleLinkedNode head, tail;
 
-    public LRUCache(int capacity) {
+    public codetop2_LRUCache(int capacity) {
         this.size = 0;
         this.capacity = capacity;
         // 使用伪头部和伪尾部节点

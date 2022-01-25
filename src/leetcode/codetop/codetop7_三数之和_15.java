@@ -12,7 +12,7 @@ import java.util.List;
  * blog: https://duktig.cn/
  * github知识库: https://github.com/duktig666/knowledge
  **/
-public class 三数之和_15 {
+public class codetop7_三数之和_15 {
 
     /**
      * 思路：
@@ -75,7 +75,7 @@ public class 三数之和_15 {
     }
 
     public static void main(String[] args) {
-        三数之和_15 test = new 三数之和_15();
+        codetop7_三数之和_15 test = new codetop7_三数之和_15();
         int[] nums = new int[] {- 1, 0, 1, 2, - 1, - 4};
         System.out.println(test.threeSum(nums));
     }

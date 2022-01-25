@@ -6,7 +6,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2021/11/27 21:19
  **/
-public class 合并两个有序链表_21 {
+public class codetop10_合并两个有序链表_21 {
 
     public static class ListNode {
         int val;

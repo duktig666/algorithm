@@ -16,7 +16,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2021/8/30 21:30
  **/
-public class 反转链表_206 {
+public class codetop1_反转链表_206 {
 
     private static class ListNode {
         int val;

@@ -10,7 +10,7 @@ import java.util.Map;
  * @author RenShiWei
  * Date: 2021/12/14 20:32
  **/
-public class 两数之和_1 {
+public class codetop9_两数之和_1 {
 
     /**
      * 思路：

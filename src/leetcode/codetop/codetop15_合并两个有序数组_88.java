@@ -12,7 +12,7 @@ package leetcode.codetop;
  * @author RenShiWei
  * Date: 2021/12/17 9:11
  **/
-public class 合并两个有序数组_88 {
+public class codetop15_合并两个有序数组_88 {
 
     /**
      * 思路：

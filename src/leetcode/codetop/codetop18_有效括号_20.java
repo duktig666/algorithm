@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * @author RenShiWei
  * Date: 2021/12/18 10:41
  **/
-public class 有效括号_20 {
+public class codetop18_有效括号_20 {
 
     /**
      * 思路：

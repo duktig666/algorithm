@@ -1,8 +1,6 @@
 package datastructure.tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * description:二叉查找树实现
@@ -12,17 +10,17 @@ import java.util.Stack;
  **/
 public class BinaryTree<E extends Comparable<E>> {
 
-    private static class Node<E> {
+    private static class TreeNode<E> {
 
         /** 数据域，存储数据元素 */
         public E e;
         /** 链域，分别指向左右孩子结点 */
-        public Node<E> left, right;
+        public TreeNode<E> left, right;
 
         /**
          * 构造结点，参数分别指向元素和左右孩子结点
          */
-        public Node(E e, Node<E> left, Node<E> right) {
+        public TreeNode(E e, TreeNode<E> left, TreeNode<E> right) {
             this.e = e;
             this.left = left;
             this.right = right;
@@ -31,17 +29,17 @@ public class BinaryTree<E extends Comparable<E>> {
         /**
          * 构造指定值的叶子结点
          */
-        public Node(E e) {
+        public TreeNode(E e) {
             this(e, null, null);
         }
 
-        public Node() {
+        public TreeNode() {
             this(null, null, null);
         }
     }
 
     /** 根节点 */
-    private Node<E> root;
+    private TreeNode<E> root;
     /** 树的节点个数 */
     private int size;
 
@@ -75,7 +73,7 @@ public class BinaryTree<E extends Comparable<E>> {
      * @param p 根节点
      * @return 二叉树的高度
      */
-    public int height(Node<E> p) {
+    public int height(TreeNode<E> p) {
         if (p == null) {
             return 0;
         }
@@ -99,23 +97,23 @@ public class BinaryTree<E extends Comparable<E>> {
     /**
      * 向以node为根的二叉查找树中插入元素e，递归算法
      *
-     * @param node 根节点
-     * @param e    插入的元素
+     * @param treeNode 根节点
+     * @param e        插入的元素
      * @return 返回插入新节点后二叉查找树的根
      */
-    private Node<E> add(Node<E> node, E e) {
+    private TreeNode<E> add(TreeNode<E> treeNode, E e) {
         //当前二分搜索树为空
-        if (node == null) {
+        if (treeNode == null) {
             size++;
-            return new Node<>(e);
+            return new TreeNode<>(e);
         }
         //判断添加在左边还是右边
-        if (e.compareTo(node.e) < 0) {
-            node.left = add(node.left, e);
-        } else if (e.compareTo(node.e) > 0) {
-            node.right = add(node.right, e);
+        if (e.compareTo(treeNode.e) < 0) {
+            treeNode.left = add(treeNode.left, e);
+        } else if (e.compareTo(treeNode.e) > 0) {
+            treeNode.right = add(treeNode.right, e);
         }
-        return node;
+        return treeNode;
     }
 
     /**
@@ -131,28 +129,33 @@ public class BinaryTree<E extends Comparable<E>> {
     /**
      * 看以node为根的二叉查找树中是否包含元素e, 递归算法
      *
-     * @param node 根节点
-     * @param e    待查找的元素
+     * @param treeNode 根节点
+     * @param e        待查找的元素
      * @return 是否包含
      */
-    private boolean contains(Node<E> node, E e) {
+    private boolean contains(TreeNode<E> treeNode, E e) {
         //二叉查找树为空，肯定不包含
-        if (node == null) {
+        if (treeNode == null) {
             return false;
         }
-        if (e.compareTo(node.e) == 0) {
+        if (e.compareTo(treeNode.e) == 0) {
             return true;
-        } else if (e.compareTo(node.e) < 0) {
-            return contains(node.left, e);
+        } else if (e.compareTo(treeNode.e) < 0) {
+            return contains(treeNode.left, e);
         } else {
-            return contains(node.right, e);
+            return contains(treeNode.right, e);
         }
     }
 
     /*
      * -----------------二叉树遍历 start---------------------
      * 前序、中序、后序 （递归和循环 两种实现方式）
-     * 层次
+     *
+     * 前序遍历，出栈顺序：根左右; 入栈顺序：中-右-左
+     * 中序遍历，出栈顺序：左根右; 入栈顺序：右根左
+     * 后序遍历，出栈顺序：左右根; 入栈顺序：根右左
+     *
+     * 层序遍历： 队列
      */
 
     /**
@@ -165,26 +168,31 @@ public class BinaryTree<E extends Comparable<E>> {
     /**
      * 前序遍历以node为根的二叉查找树, 递归算法
      *
-     * @param node 根节点
+     * @param treeNode 根节点
      */
-    private void preOrder(Node<E> node) {
-        if (node == null) {
+    private void preOrder(TreeNode<E> treeNode) {
+        if (treeNode == null) {
             return;
         }
-        System.out.println(node.e);
-        preOrder(node.left);
-        preOrder(node.right);
+        System.out.println(treeNode.e);
+        preOrder(treeNode.left);
+        preOrder(treeNode.right);
     }
 
     /**
      * 二叉查找树的非递归前序遍历（压栈实现）
+     * 前序遍历顺序：中-左-右，入栈顺序：中-右-左
      */
-    public void preOrderByLoop() {
-        Stack<Node<E>> stack = new Stack<>();
+    public List<Integer> preOrderByLoop(common.TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Deque<common.TreeNode> stack = new LinkedList<>();
         stack.push(root);
         while (! stack.isEmpty()) {
-            Node<E> cur = stack.pop();
-            System.out.println(cur.e);
+            common.TreeNode cur = stack.pop();
+            res.add(cur.val);
             if (cur.right != null) {
                 stack.push(cur.right);
             }
@@ -192,6 +200,7 @@ public class BinaryTree<E extends Comparable<E>> {
                 stack.push(cur.left);
             }
         }
+        return res;
     }
 
     /**
@@ -204,15 +213,49 @@ public class BinaryTree<E extends Comparable<E>> {
     /**
      * 中序遍历以node为根的二分搜索树, 递归算法
      *
-     * @param node 根节点
+     * @param treeNode 根节点
      */
-    private void inOrder(Node<E> node) {
-        if (node == null) {
+    private void inOrder(TreeNode<E> treeNode) {
+        if (treeNode == null) {
             return;
         }
-        inOrder(node.left);
-        System.out.println(node.e);
-        inOrder(node.right);
+        inOrder(treeNode.left);
+        System.out.println(treeNode.e);
+        inOrder(treeNode.right);
+    }
+
+    /**
+     * 迭代实现二叉树的中序遍历
+     * 中序遍历顺序: 左-中-右 入栈顺序： 左-右
+     */
+    public List<Integer> inOrderLoop(common.TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        Deque<common.TreeNode> stk = new LinkedList<>();
+        // root为空 或者 stack为空，遍历结束
+        while (root != null || ! stk.isEmpty()) {
+            // 先根后左入栈，访问到最底层
+            if (root != null) {
+                // 将访问的节点放进栈
+                stk.push(root);
+                // 左
+                root = root.left;
+            } else {
+                /*
+                    此时root==null，说明上一步的root没有左子树
+                    1. 执行左出栈。因为此时root==null，导致root.right一定为null
+                    2. 执行下一次外层while代码块，根出栈。此时root.right可能存在
+                    3a. 若root.right存在，右入栈，再出栈
+                    3b. 若root.right不存在，重复步骤2
+                */
+                // 从栈里弹出的数据，就是要处理的数据（放进result数组里的数据）
+                root = stk.pop();
+                // 中
+                res.add(root.val);
+                // 右
+                root = root.right;
+            }
+        }
+        return res;
     }
 
     /**
@@ -226,15 +269,123 @@ public class BinaryTree<E extends Comparable<E>> {
      * 后序遍历以node为根的二分搜索树, 递归算法
      * 例子：内存释放，先释放孩子内存，再释放自身内存
      *
-     * @param node 根节点
+     * @param treeNode 根节点
      */
-    private void postOrder(Node<E> node) {
-        if (node == null) {
+    private void postOrder(TreeNode<E> treeNode) {
+        if (treeNode == null) {
             return;
         }
-        postOrder(node.left);
-        postOrder(node.right);
-        System.out.println(node.e);
+        postOrder(treeNode.left);
+        postOrder(treeNode.right);
+        System.out.println(treeNode.e);
+    }
+
+    /**
+     * 迭代实现 后序遍历
+     * 与前序遍历类似，只是稍微改了顺序，并在最后翻转
+     * 后序遍历顺序 左-右-中 入栈顺序：中-左-右 出栈顺序：中-右-左， 最后翻转结果
+     */
+    public List<Integer> postOrderLoop(common.TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        Deque<common.TreeNode> stack = new LinkedList<>();
+        stack.push(root);
+        while (! stack.isEmpty()) {
+            common.TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+        }
+        Collections.reverse(result);
+        return result;
+    }
+
+    /**
+     * 前序遍历 通用框架写法
+     */
+    public List<Integer> preOrderCommon(common.TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Deque<common.TreeNode> stack = new LinkedList<>();
+        while (root != null || ! stack.isEmpty()) {
+            // 1.遍历到最左子节点
+            while (root != null) {
+                // 先加根
+                res.add(root.val);
+                stack.push(root);
+                root = root.left;
+            }
+            common.TreeNode cur = stack.pop();
+            root = cur.right;
+
+        }
+        return res;
+    }
+
+    /**
+     * 中序遍历 通用框架写法
+     */
+    public List<Integer> inOrderCommon(common.TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        Deque<common.TreeNode> stack = new LinkedList<>();
+        // root为空 或者 stack为空，遍历结束
+        while (root != null || ! stack.isEmpty()) {
+            // 先根后左入栈，访问到最底层
+            if (root != null) {
+                // 将访问的节点放进栈
+                stack.push(root);
+                // 左
+                root = root.left;
+            } else {
+                /*
+                    此时root==null，说明上一步的root没有左子树
+                    1. 执行左出栈。因为此时root==null，导致root.right一定为null
+                    2. 执行下一次外层while代码块，根出栈。此时root.right可能存在
+                    3a. 若root.right存在，右入栈，再出栈
+                    3b. 若root.right不存在，重复步骤2
+                */
+                // 从栈里弹出的数据，就是要处理的数据（放进result数组里的数据）
+                root = stack.pop();
+                // 中
+                res.add(root.val);
+                // 右
+                root = root.right;
+            }
+        }
+        return res;
+    }
+
+    /**
+     * 后序遍历 通用框架写法
+     */
+    public List<Integer> postOrderCommon(common.TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Deque<common.TreeNode> stack = new LinkedList<>();
+        while (root != null || ! stack.isEmpty()) {
+            // 1.遍历到最左子节点
+            while (root != null) {
+                // 先加根
+                res.add(root.val);
+                stack.push(root);
+                root = root.right;
+            }
+            common.TreeNode cur = stack.pop();
+            root = cur.left;
+
+        }
+        Collections.reverse(res);
+        return res;
     }
 
     /**
@@ -243,10 +394,10 @@ public class BinaryTree<E extends Comparable<E>> {
      */
     public void levelOrder() {
         //链表实现队列
-        Queue<Node<E>> queue = new LinkedList<>();
+        Queue<TreeNode<E>> queue = new LinkedList<>();
         queue.add(root);
         while (! queue.isEmpty()) {
-            Node<E> cur = queue.remove();
+            TreeNode<E> cur = queue.remove();
             System.out.println(cur.e);
             if (cur.left != null) {
                 queue.add(cur.left);
@@ -278,14 +429,14 @@ public class BinaryTree<E extends Comparable<E>> {
     /**
      * 查找二叉树最小值所在的节点
      *
-     * @param node 根节点
+     * @param treeNode 根节点
      * @return 返回以node为根的二分搜索树的最小值所在的节点
      */
-    private Node<E> minimum(Node<E> node) {
-        if (node.left == null) {
-            return node;
+    private TreeNode<E> minimum(TreeNode<E> treeNode) {
+        if (treeNode.left == null) {
+            return treeNode;
         }
-        return minimum(node.left);
+        return minimum(treeNode.left);
     }
 
     /**
@@ -303,14 +454,14 @@ public class BinaryTree<E extends Comparable<E>> {
     /**
      * 查找二分搜索树的最大值所在的节点
      *
-     * @param node 根节点
+     * @param treeNode 根节点
      * @return 二分搜索树的最大值所在的节点
      */
-    private Node<E> maximum(Node<E> node) {
-        if (node.right == null) {
-            return node;
+    private TreeNode<E> maximum(TreeNode<E> treeNode) {
+        if (treeNode.right == null) {
+            return treeNode;
         }
-        return maximum(node.right);
+        return maximum(treeNode.right);
     }
 
     //------------二叉树寻找最大值、最小值 start----------
@@ -329,18 +480,18 @@ public class BinaryTree<E extends Comparable<E>> {
     /**
      * 删除掉以node为根的二分搜索树中的最小节点
      *
-     * @param node 根节点
+     * @param treeNode 根节点
      * @return 返回删除节点后新的二分搜索树的根
      */
-    private Node<E> removeMin(Node<E> node) {
-        if (node.left == null) {
-            Node<E> rightNode = node.right;
-            node.right = null;
+    private TreeNode<E> removeMin(TreeNode<E> treeNode) {
+        if (treeNode.left == null) {
+            TreeNode<E> rightTreeNode = treeNode.right;
+            treeNode.right = null;
             size--;
-            return rightNode;
+            return rightTreeNode;
         }
-        node.left = removeMin(node.left);
-        return node;
+        treeNode.left = removeMin(treeNode.left);
+        return treeNode;
     }
 
     /**
@@ -357,18 +508,18 @@ public class BinaryTree<E extends Comparable<E>> {
     /**
      * 删除掉以node为根的二分搜索树中的最大节点
      *
-     * @param node 根节点
+     * @param treeNode 根节点
      * @return 返回删除节点后新的二分搜索树的根
      */
-    private Node<E> removeMax(Node<E> node) {
-        if (node.right == null) {
-            Node<E> leftNode = node.left;
-            node.left = null;
+    private TreeNode<E> removeMax(TreeNode<E> treeNode) {
+        if (treeNode.right == null) {
+            TreeNode<E> leftTreeNode = treeNode.left;
+            treeNode.left = null;
             size--;
-            return leftNode;
+            return leftTreeNode;
         }
-        node.right = removeMax(node.right);
-        return node;
+        treeNode.right = removeMax(treeNode.right);
+        return treeNode;
     }
 
     /**
@@ -383,46 +534,46 @@ public class BinaryTree<E extends Comparable<E>> {
     /**
      * 删除掉以node为根的二分搜索树中值为e的节点, 递归算法
      *
-     * @param node 根节点
-     * @param e    待删除的元素
+     * @param treeNode 根节点
+     * @param e        待删除的元素
      * @return 返回删除节点后新的二分搜索树的根
      */
-    private Node<E> remove(Node<E> node, E e) {
-        if (node == null) {
+    private TreeNode<E> remove(TreeNode<E> treeNode, E e) {
+        if (treeNode == null) {
             return null;
         }
-        if (e.compareTo(node.e) < 0) {
+        if (e.compareTo(treeNode.e) < 0) {
             //小于当前节点，从左子树寻找
-            node.left = remove(node.left, e);
-            return node;
-        } else if (e.compareTo(node.e) > 0) {
+            treeNode.left = remove(treeNode.left, e);
+            return treeNode;
+        } else if (e.compareTo(treeNode.e) > 0) {
             //大于当前节点，从右子树寻找
-            node.right = remove(node.right, e);
-            return node;
+            treeNode.right = remove(treeNode.right, e);
+            return treeNode;
         } else {
             // 如果找到待删除的节点
             // 待删除节点左子树为空的情况
-            if (node.left == null) {
-                Node<E> rightNode = node.right;
-                node.right = null;
+            if (treeNode.left == null) {
+                TreeNode<E> rightTreeNode = treeNode.right;
+                treeNode.right = null;
                 size--;
-                return rightNode;
+                return rightTreeNode;
             }
             // 待删除节点右子树为空的情况
-            if (node.right == null) {
-                Node<E> leftNode = node.left;
-                node.left = null;
+            if (treeNode.right == null) {
+                TreeNode<E> leftTreeNode = treeNode.left;
+                treeNode.left = null;
                 size--;
-                return leftNode;
+                return leftTreeNode;
             }
             // 待删除节点左右子树均不为空的情况
             // 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
             // 用这个节点顶替待删除节点的位置
-            Node<E> successor = minimum(node.right);
+            TreeNode<E> successor = minimum(treeNode.right);
             //返回值其实为node.right
-            successor.right = removeMin(node.right);
-            successor.left = node.left;
-            node.left = node.right = null;
+            successor.right = removeMin(treeNode.right);
+            successor.left = treeNode.left;
+            treeNode.left = treeNode.right = null;
             return successor;
         }
     }
@@ -444,7 +595,7 @@ public class BinaryTree<E extends Comparable<E>> {
      * @param p 根节点
      * @return 二叉树的广义表表示字符串
      */
-    public String toGenListString(Node<E> p) {
+    public String toGenListString(TreeNode<E> p) {
         if (p == null) {
             // 返回空子树表示
             return "^";
@@ -462,18 +613,18 @@ public class BinaryTree<E extends Comparable<E>> {
     /**
      * 生成以node为根节点，深度为depth的描述二叉树的字符串
      *
-     * @param node  根节点
-     * @param depth 从那一层开始
-     * @param res   拼接的字符串
+     * @param treeNode 根节点
+     * @param depth    从那一层开始
+     * @param res      拼接的字符串
      */
-    private void generateString(Node<E> node, int depth, StringBuilder res) {
-        if (node == null) {
+    private void generateString(TreeNode<E> treeNode, int depth, StringBuilder res) {
+        if (treeNode == null) {
             res.append(generateDepthString(depth)).append("null\n");
             return;
         }
-        res.append(generateDepthString(depth)).append(node.e).append("\n");
-        generateString(node.left, depth + 1, res);
-        generateString(node.right, depth + 1, res);
+        res.append(generateDepthString(depth)).append(treeNode.e).append("\n");
+        generateString(treeNode.left, depth + 1, res);
+        generateString(treeNode.right, depth + 1, res);
     }
 
     /**
@@ -515,7 +666,7 @@ public class BinaryTree<E extends Comparable<E>> {
      * @param inOrder  中序遍历序列
      * @return 树根节点
      */
-    public Node<E> reConstructBinaryTree(E[] preOrder, E[] inOrder) {
+    public TreeNode<E> reConstructBinaryTree(E[] preOrder, E[] inOrder) {
         if (preOrder == null || preOrder.length == 0 || inOrder == null || inOrder.length == 0) {
             return null;
         }
@@ -531,7 +682,7 @@ public class BinaryTree<E extends Comparable<E>> {
      * @param inR      子 中序遍历序列结束索引
      * @return 树根节点
      */
-    private Node<E> helper(E[] preOrder, int preL, int preR, E[] inOrder, int inL, int inR) {
+    private TreeNode<E> helper(E[] preOrder, int preL, int preR, E[] inOrder, int inL, int inR) {
         if (preL > preR || inL > inR) {
             return null;
         }
@@ -542,7 +693,7 @@ public class BinaryTree<E extends Comparable<E>> {
         while (index <= inR && inOrder[index] != rootVal) {
             index++;
         }
-        Node<E> root = new Node<>(rootVal);
+        TreeNode<E> root = new TreeNode<>(rootVal);
         //选取前序序列和中序序列中左子树的子序列，递归构建左子树
         root.left = helper(preOrder, preL + 1, preL - inL + index, inOrder, inL, index);
         //选取前序序列和中序序列中右子树的子序列，递归构建右子树

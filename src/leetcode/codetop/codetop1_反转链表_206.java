@@ -1,5 +1,7 @@
 package leetcode.codetop;
 
+import common.ListNode;
+
 /**
  * description: 反转链表 @see https://leetcode-cn.com/problems/reverse-linked-list/
  * 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表
@@ -18,19 +20,6 @@ package leetcode.codetop;
  **/
 public class codetop1_反转链表_206 {
 
-    private static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {}
-
-        ListNode(int val) { this.val = val; }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     /**
      * 迭代实现反转链表
@@ -39,7 +28,7 @@ public class codetop1_反转链表_206 {
         //临时保存上一节点
         ListNode pre = null, cur = head, nextTemp = null;
         while (cur != null) {
-            //临时节点，用于存储下一个节点，当指针反转后，还能指向写一个节点
+            //临时节点，用于存储下一个节点，当指针反转后，还能指向下一个节点
             nextTemp = cur.next;
             // 反转指针
             cur.next = pre;

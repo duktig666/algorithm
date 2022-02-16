@@ -165,7 +165,6 @@ public class BowlingBall {
     /**
      * 计算补中的奖励分数
      * <p>
-     * 第10次 特殊处理 todo
      */
     private int fillReward(char[] arr, int i, int index) {
         int sum = 0;
@@ -296,6 +295,6 @@ public class BowlingBall {
         System.out.println(res);
         return res;
     }
-    
+
 }
 

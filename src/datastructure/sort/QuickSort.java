@@ -84,7 +84,7 @@ public class QuickSort {
                 swap(arr, less, more);
             }
         }
-        //while退出时，两者交错，right一定指向第一个小于主元的元素
+        //while退出时，两者交错，more一定指向第一个小于主元的元素
         swap(arr, l, more);
         return more;
     }

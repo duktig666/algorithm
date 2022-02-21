@@ -98,9 +98,12 @@ public class codetop1_反转链表_206 {
      * 1. pre 寻找到 left 的前一个元素
      * 2. 遍历，每次将元素移动到最前边（移动n-1次）
      * <p>
+     * 每遍历到一个节点，让这个新节点来到反转部分的起始位置
+     *
+     * <p>
      * 指针含义：
      * cur：指向待反转区域的第一个节点 left；
-     * next：永远指向 cur 的下一个节点，循环过程中，cur 变化以后 next 会变化；
+     * nextTemp：永远指向 cur 的下一个节点，循环过程中，cur 变化以后 nextTemp 会变化；
      * pre：永远指向待反转区域的第一个节点 left 的前一个节点，在循环过程中不变。
      */
     public ListNode reverseBetweenLoop(ListNode head, int left, int right) {
@@ -113,12 +116,12 @@ public class codetop1_反转链表_206 {
             pre = pre.next;
         }
         ListNode cur = pre.next;
-        ListNode next;
+        ListNode nextTemp;
         for (int i = 0; i < right - left; i++) {
-            next = cur.next;
-            cur.next = next.next;
-            next.next = pre.next;
-            pre.next = next;
+            nextTemp = cur.next;
+            cur.next = nextTemp.next;
+            nextTemp.next = pre.next;
+            pre.next = nextTemp;
         }
         return dummyNode.next;
     }
